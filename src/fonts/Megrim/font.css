@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Megrim';
+  src: url('Megrim.eot'); /* IE9 Compat Modes */
+  src: url('Megrim.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Megrim.woff') format('woff'), /* Modern Browsers */
+       url('Megrim.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Megrim.svg#baabaef2a8e6d6cdb41e3d36c363a4c5') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  400;
+}
+

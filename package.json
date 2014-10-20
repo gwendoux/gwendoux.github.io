@@ -1,0 +1,20 @@
+{
+  "name": "gwendoux.test",
+  "version": "0.0.1",
+  "description": "test for a single webpage for my personal website",
+  "main": "index.html",
+  "scripts": {
+    "test": "test.js"
+  },
+  "keywords": [
+    "personal",
+    "javascript",
+    "css",
+    "html"
+  ],
+  "author": "gwendoux",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.8.8"
+  }
+}
