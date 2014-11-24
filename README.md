@@ -1,7 +1,7 @@
 gwendoux.com -- personal website
 --------------------------------
 
-## How to deploy
+Need to update
 
-$ gulp deploy
+Launch with gulp on localhost:8014
 
