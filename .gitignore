@@ -18,4 +18,4 @@ Temporary Items
 node_modules/
 *.min.css
 *.min.js
-src/css
+www/css
