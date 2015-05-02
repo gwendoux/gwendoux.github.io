@@ -6,9 +6,9 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'build');
 
-    grunt.registerTask('test', [
+    /*grunt.registerTask('test', [
         'jshint'
-    ]);
+    ]);*/
 
     /*grunt.registerTask('server', [
         'jshint:server',
@@ -29,14 +29,14 @@ module.exports = function(grunt) {
         'clean:postprocess'
     ]);
 
-    grunt.registerTask('js', [
+    /*grunt.registerTask('js', [
         'uglify'
-    ]);
+    ]);*/
 
     grunt.registerTask('build', [
         'clean:build',
-        'jshint:client',
-        'js',
+        //'jshint:client',
+        //'js',
         'css',
         'notify:build'
     ]);
@@ -49,40 +49,56 @@ module.exports = function(grunt) {
             src: 'www'
         },
 
-        jshint: {
-            options: {
-                unused: 'vars',
-                devel: true,
-                undef: true,
-                ignores: ['dist/**',
-                          'node_modules/**',
-                          '<%= config.src %>/js/vendors/**',
-                          '**/*.min.js'
-                         ]
-            },
-            /*server: {
-                options: {
-                    node: true,
-                    esnext: true
-                },
-                files: {
-                    src: ['server.js'
-                         ]
-                }
-            },*/
-            client: {
-                options: {
-                    browser: true,
-                    jquery: true
-                },
-                files: {
-                        src: [
-                            '<%= config.src %>/js/**/*.js',
-                            '!<%= config.src %>/js/vendors/*.js'
-                         ]
-                }
-            }
-        },
+        //jshint: {
+        //    options: {
+        //        unused: 'vars',
+        //        devel: true,
+        //        undef: true,
+        //        ignores: ['dist/**',
+        //                  'node_modules/**',
+        //                  '<%= config.src %>/js/vendors/**',
+        //                  '**/*.min.js'
+        //                 ]
+        //    },
+        //    /*server: {
+        //        options: {
+        //            node: true,
+        //            esnext: true
+        //        },
+        //        files: {
+        //            src: ['server.js'
+        //                 ]
+        //        }
+        //    },*/
+        //    client: {
+        //        options: {
+        //            browser: true,
+        //            jquery: true
+        //        },
+        //        files: {
+        //                src: [
+        //                    '<%= config.src %>/js/**/*.js',
+        //                    '!<%= config.src %>/js/vendors/*.js'
+        //                 ]
+        //        }
+        //    }
+        //},
+
+        //uglify : {
+        //    options: {
+        //        report: 'gzip',
+        //        beautify: true,
+        //        compress: false
+        //    },
+        //    app: {
+        //        src: [
+        //          './node_modules/jquery/dist/jquery.js',
+        //          '<%= config.src %>/js/vendors/covervid.js',
+        //          '<%= config.src %>/js/app.js',
+        //        ],
+        //        dest: '<%= config.src %>/js/app.min.js'
+        //    }
+        //},
 
         less: {
             concat: {
@@ -112,22 +128,6 @@ module.exports = function(grunt) {
             }
         },
 
-        uglify : {
-            options: {
-                report: 'gzip',
-                beautify: true,
-                compress: false
-            },
-            app: {
-                src: [
-                  './node_modules/jquery/dist/jquery.js',
-                  '<%= config.src %>/js/vendors/covervid.js',
-                  '<%= config.src %>/js/app.js',
-                ],
-                dest: '<%= config.src %>/js/app.min.js'
-            }
-        },
-
         clean: {
             build: {
                 src: ['<%= config.src %>/css/*.min.css', '<%= config.src %>/js/*.min.js', '<%= config.src %>/js/*.map.js']
@@ -152,11 +152,11 @@ module.exports = function(grunt) {
             less: {
                 files: ['<%= config.src %>/less/**/*.less'],
                 tasks: ['css', 'notify:reload']
-            },
-            js: {
-                files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
-                tasks: ['js:app', 'notify:reload']
-            }
+            }//,
+            //js: {
+            //    files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
+            //    tasks: ['js:app', 'notify:reload']
+            //}
         },
         /*nodemon: {
             dev: {
@@ -181,8 +181,11 @@ module.exports = function(grunt) {
             options: {
                 mode: '755'
             },
-            target1: {
+            www: {
                 src: ['<%= config.src %>/**']
+            },
+            server: {
+                src: ['www/**']
             }
         },
 
