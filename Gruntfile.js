@@ -6,20 +6,20 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'build');
 
-    /*grunt.registerTask('test', [
+    grunt.registerTask('test', [
         'jshint'
-    ]);*/
+    ]);
 
-    /*grunt.registerTask('server', [
+    grunt.registerTask('server', [
         'jshint:server',
         'nodemon'
-    ]);*/
+    ]);
 
     grunt.registerTask('start', [
         'build',
-        'connect',
         'watch',
-        'notify:watch'
+        'notify:watch',
+        'connect'
     ]);
 
     grunt.registerTask('css', [
@@ -49,27 +49,27 @@ module.exports = function(grunt) {
             src: 'www'
         },
 
-        //jshint: {
-        //    options: {
-        //        unused: 'vars',
-        //        devel: true,
-        //        undef: true,
-        //        ignores: ['dist/**',
-        //                  'node_modules/**',
-        //                  '<%= config.src %>/js/vendors/**',
-        //                  '**/*.min.js'
-        //                 ]
-        //    },
-        //    /*server: {
-        //        options: {
-        //            node: true,
-        //            esnext: true
-        //        },
-        //        files: {
-        //            src: ['server.js'
-        //                 ]
-        //        }
-        //    },*/
+        jshint: {
+            options: {
+                unused: 'vars',
+                devel: true,
+                undef: true,
+                ignores: ['dist/**',
+                          'node_modules/**',
+                          '<%= config.src %>/js/vendors/**',
+                          '**/*.min.js'
+                         ]
+            },
+            server: {
+                options: {
+                    node: true,
+                    esnext: true
+                },
+                files: {
+                    src: ['server.js'
+                         ]
+                }
+            }
         //    client: {
         //        options: {
         //            browser: true,
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         //                 ]
         //        }
         //    }
-        //},
+        },
 
         //uglify : {
         //    options: {
@@ -158,9 +158,9 @@ module.exports = function(grunt) {
             //    tasks: ['js:app', 'notify:reload']
             //}
         },
-        /*nodemon: {
+        nodemon: {
             dev: {
-                script: 'server.js',
+                script: 'server/server.js',
                 options: {
                     args: ['dev'],
                     nodeArgs: ['--debug'],
@@ -171,11 +171,11 @@ module.exports = function(grunt) {
                     },
                     cwd: __dirname,
                     ignore: ['node_modules/**', 'www/**', 'Gruntfile.js'],
-                    //watch: ['server'],
+                    watch: ['server/*.js'],
                     delay: 1000
                 }
             }
-        },*/
+        },
 
         chmod: {
             options: {
