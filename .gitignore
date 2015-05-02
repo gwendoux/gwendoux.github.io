@@ -19,3 +19,4 @@ node_modules/
 *.min.css
 *.min.js
 www/css
+config.json
