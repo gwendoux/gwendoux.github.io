@@ -17,9 +17,8 @@ module.exports = function(grunt) {
 
     grunt.registerTask('start', [
         'build',
-        'watch',
         'notify:watch',
-        'connect'
+        'concurrent'
     ]);
 
     grunt.registerTask('css', [
@@ -66,8 +65,7 @@ module.exports = function(grunt) {
                     esnext: true
                 },
                 files: {
-                    src: ['server/**'
-                         ]
+                    src: ['server.js']
                 }
             }
         //    client: {
@@ -160,7 +158,7 @@ module.exports = function(grunt) {
         },
         nodemon: {
             dev: {
-                script: 'server/server.js',
+                script: 'server.js',
                 options: {
                     args: ['dev'],
                     nodeArgs: ['--debug'],
@@ -171,8 +169,17 @@ module.exports = function(grunt) {
                     },
                     cwd: __dirname,
                     ignore: ['node_modules/**', 'www/**', 'Gruntfile.js'],
-                    watch: ['server/*.js'],
+                    watch: ['server.js'],
                     delay: 1000
+                }
+            }
+        },
+
+        concurrent: {
+            target: {
+                tasks: ['nodemon', 'watch'],
+                options: {
+                    logConcurrentOutput: true
                 }
             }
         },
