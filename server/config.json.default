@@ -1,0 +1,10 @@
+{
+    "instagram": {
+        "User_ID": "",
+        "CLIENT_ID": "",
+        "CLIENT_SECRET": "",
+        "WEBSITE_URL": "",
+        "REDIRECT_URI": "",
+        "ACCESS_TOKEN": ""
+    }
+}
