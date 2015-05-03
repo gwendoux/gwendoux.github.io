@@ -33,6 +33,7 @@
     "time-grunt": "1.1.1"
   },
   "dependencies": {
+    "body-parser": "^1.12.3",
     "express": "^4.12.3",
     "instagram-node-lib": "^0.1.1",
     "jquery": "^2.1.4",
