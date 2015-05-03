@@ -66,7 +66,7 @@ module.exports = function(grunt) {
                     esnext: true
                 },
                 files: {
-                    src: ['server.js'
+                    src: ['server/**'
                          ]
                 }
             }
