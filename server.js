@@ -19,13 +19,12 @@ app.use(logger('dev'));
 app.set('port', process.env.PORT || 8014);
 app.use(express.static(path.join(__dirname, 'www')));
 
-
-app.use('/api/coffee', jsonParser, function (req, res) {
+app.use('/api/photos/:tag', jsonParser, function (req, res) {
     Instagram.users.recent({
         user_id: config.Instagram.User_ID,
         complete: function(data){
             var coffeeBeans = data.filter(function(photo) {
-                return photo.tags.indexOf('coffeeoftheday') > -1;
+                return photo.tags.indexOf(req.param('tag')) > -1;
             });
             res.setHeader('Content-Type', 'text/plain');
             res.end(JSON.stringify(coffeeBeans, null, 2));
