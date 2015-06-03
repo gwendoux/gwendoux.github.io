@@ -38,6 +38,7 @@
     "express": "^4.12.4",
     "instagram-node-lib": "^0.1.1",
     "jquery": "^2.1.4",
+    "moment": "^2.10.3",
     "morgan": "^1.5.3"
   }
 }
