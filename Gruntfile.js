@@ -28,14 +28,16 @@ module.exports = function(grunt) {
         'clean:postprocess'
     ]);
 
-    /*grunt.registerTask('js', [
-        'uglify'
-    ]);*/
+    grunt.registerTask('js', [
+        'browserify',
+        'uglify',
+        'clean:postprocess'
+    ]);
 
     grunt.registerTask('build', [
         'clean:build',
-        //'jshint:client',
-        //'js',
+        'jshint:client',
+        'js',
         'css',
         'notify:build'
     ]);
@@ -67,36 +69,45 @@ module.exports = function(grunt) {
                 files: {
                     src: ['server.js']
                 }
+            },
+            client: {
+                options: {
+                    browser: true,
+                    globals: {
+                        require: false,
+                        exports: false
+                    }
+                },
+                files: {
+                        src: [
+                            '<%= config.src %>/js/**/*.js',
+                            '!<%= config.src %>/js/vendors/*.js'
+                         ]
+                }
             }
-        //    client: {
-        //        options: {
-        //            browser: true,
-        //            jquery: true
-        //        },
-        //        files: {
-        //                src: [
-        //                    '<%= config.src %>/js/**/*.js',
-        //                    '!<%= config.src %>/js/vendors/*.js'
-        //                 ]
-        //        }
-        //    }
         },
 
-        //uglify : {
-        //    options: {
-        //        report: 'gzip',
-        //        beautify: true,
-        //        compress: false
-        //    },
-        //    app: {
-        //        src: [
-        //          './node_modules/jquery/dist/jquery.js',
-        //          '<%= config.src %>/js/vendors/covervid.js',
-        //          '<%= config.src %>/js/app.js',
-        //        ],
-        //        dest: '<%= config.src %>/js/app.min.js'
-        //    }
-        //},
+        browserify: {
+            dist: {
+                files: {
+                    '<%= config.src %>/js/script.js': ['<%= config.src %>/js/behavior.js'],
+                }
+            }
+        },
+
+        uglify : {
+            options: {
+                report: 'gzip',
+                beautify: true,
+                compress: false
+            },
+            app: {
+                src: [
+                  '<%= config.src %>/js/script.js',
+                ],
+                dest: '<%= config.src %>/js/script.min.js'
+            }
+        },
 
         less: {
             concat: {
@@ -131,7 +142,7 @@ module.exports = function(grunt) {
                 src: ['<%= config.src %>/css/*.min.css', '<%= config.src %>/js/*.min.js', '<%= config.src %>/js/*.map.js']
             },
             postprocess: {
-                src: ['<%= config.src %>/css/main.css']
+                src: ['<%= config.src %>/css/main.css', '<%= config.src %>/js/script.js']
             },
             dist: ['dist']
         },
@@ -150,11 +161,11 @@ module.exports = function(grunt) {
             less: {
                 files: ['<%= config.src %>/less/**/*.less'],
                 tasks: ['css', 'notify:reload']
-            }//,
-            //js: {
-            //    files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
-            //    tasks: ['js:app', 'notify:reload']
-            //}
+            },
+            js: {
+                files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
+                tasks: ['js', 'notify:reload']
+            }
         },
         nodemon: {
             dev: {
