@@ -24,7 +24,7 @@ app.use('/api/photos/:tag', jsonParser, function (req, res) {
         user_id: config.Instagram.User_ID,
         complete: function(data){
             var coffeeBeans = data.filter(function(photo) {
-                return photo.tags.indexOf(req.param('tag')) > -1;
+                return photo.tags.indexOf(req.params.tag) > -1;
             });
             res.setHeader('Content-Type', 'text/plain');
             res.end(JSON.stringify(coffeeBeans, null, 2));
