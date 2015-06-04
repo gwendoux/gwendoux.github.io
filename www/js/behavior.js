@@ -10,8 +10,9 @@ var moment = require('moment');
 
         $.getJSON(coffeeRq, function(data){
             var html = [];
+            data = data.slice(0, 4);
             $.each(data, function(key, val) {
-                var formatDate = moment(val.created_time, 'X').format('dddd D MMMM YYYY');
+                var formatDate = moment(val.created_time, 'X').fromNow();
                 html.push('<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">');
                 html.push('<div class="photo-box">');
                 html.push('<div class="image-wrap">');
