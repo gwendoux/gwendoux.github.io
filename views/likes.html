@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <title>gwendoux.com</title>
+</head>
+<body>
+<h1>Instagram likes</h1>
+<ul>
+{% for item in data %}
+  <li><img src="item.images.standard_resolution.url" /></li>
+{%  endfor %}
+</ul>
+</body>
+</html>
