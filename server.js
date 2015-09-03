@@ -36,6 +36,16 @@ app.get('/', function (req, res) {
     res.render('index.html');
 });
 
+app.use('/likes/', function (req, res) {
+    ig.user_self_liked(function(err, data){
+        if(err) {
+            console.log(err);
+            throw err;
+        }
+        res.render('likes.html', {data: data});
+    });
+});
+
 app.use('/api/photos/:tag', jsonParser, function (req, res) {
     //ig.users(config.instagram_user_id, function(err, result) {
     ig.user_self_media_recent(function(err, result) {
@@ -48,6 +58,17 @@ app.use('/api/photos/:tag', jsonParser, function (req, res) {
         });
         res.setHeader('Content-Type', 'text/plain');
         res.end(JSON.stringify(coffeeBeans, null, 2));
+    });
+});
+
+app.use('/api/likes/', jsonParser, function (req, res) {
+    ig.user_self_liked(function(err, data){
+        if(err) {
+            console.log(err);
+            throw err;
+        }
+        res.setHeader('Content-Type', 'text/plain');
+        res.end(JSON.stringify(data, null, 2));
     });
 });
 
