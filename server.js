@@ -36,6 +36,10 @@ app.get('/', function (req, res) {
     res.render('index.html');
 });
 
+app.get('/resume', function (req, res) {
+    res.render('resume.html');
+});
+
 app.use('/likes/', function (req, res) {
     ig.user_self_liked(function(err, data){
         if(err) {
