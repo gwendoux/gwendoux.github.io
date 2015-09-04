@@ -18,8 +18,7 @@ module.exports = function(grunt) {
     grunt.registerTask('start', [
         'build',
         'notify:watch',
-        'server'
-        //'concurrent'
+        'concurrent'
     ]);
 
     grunt.registerTask('css', [
@@ -188,7 +187,7 @@ module.exports = function(grunt) {
 
         concurrent: {
             target: {
-                tasks: ['nodemon', 'watch'],
+                tasks: ['server', 'watch'],
                 options: {
                     logConcurrentOutput: true
                 }
