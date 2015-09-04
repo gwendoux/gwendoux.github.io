@@ -1,0 +1,36 @@
+[
+    {
+        "title": "Vacation",
+        "where": "Médiathèque Issy les Moulineaux",
+        "time": "septembre 2003 – janvier 2005 (1 an 5 mois)",
+        "resume": "",
+        "job": [
+            "Accueil du public",
+            "Renseignements auprès des usagers",
+            "Rangement systématique des rayonnages"
+        ],
+        "url": ""
+    },
+    {
+        "title": "Assistant de production",
+        "where": "Les Films du requin",
+        "time": "février 2004 – juin 2004 (5 mois)",
+        "resume": "",
+        "job": [
+            "Gestion administrative (aide recherche de financement, inscription festival, ...)",
+            "Support post-production (sous-titre, cablage de régie, numérisation et copie)"
+        ],
+        "url": ""
+    },
+    {
+        "title": "Assistant Revue de presse",
+        "where": "SIG - Service d'information du gouvernement",
+        "time": "juillet 2003 – août 2003 (2 mois)",
+        "resume": "",
+        "job": [
+            "Identification et saisie des interventions et des chroniques relatifs au Premier ministre et aux memebres du Gouvernement",
+            "Revue de presse des journaux et chroniques politique des principales radios et tv"
+        ],
+        "url": ""
+    }
+]
