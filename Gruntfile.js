@@ -18,7 +18,8 @@ module.exports = function(grunt) {
     grunt.registerTask('start', [
         'build',
         'notify:watch',
-        'concurrent'
+        'server'
+        //'concurrent'
     ]);
 
     grunt.registerTask('css', [
@@ -47,7 +48,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         config: {
-            src: 'www'
+            src: 'public'
         },
 
         jshint: {
@@ -67,7 +68,9 @@ module.exports = function(grunt) {
                     esnext: true
                 },
                 files: {
-                    src: ['server.js']
+                    src: ['**/*.json', '**/*.js',
+                          '!public/js/*.js'
+                         ]
                 }
             },
             client: {
@@ -79,10 +82,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                        src: [
-                            '<%= config.src %>/js/**/*.js',
-                            '!<%= config.src %>/js/vendors/*.js'
-                         ]
+                    src: ['<%= config.src %>/js/*.js']
                 }
             }
         },
@@ -179,7 +179,7 @@ module.exports = function(grunt) {
                         });
                     },
                     cwd: __dirname,
-                    ignore: ['node_modules/**', 'www/**', 'Gruntfile.js'],
+                    ignore: ['node_modules/**', 'Gruntfile.js'],
                     watch: ['server.js'],
                     delay: 1000
                 }
