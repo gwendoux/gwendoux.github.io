@@ -6,13 +6,9 @@ var nunjucks  = require('nunjucks');
 var path = require('path');
 var logger = require('morgan');
 var config = require('./lib/config');
-//var Instagram = require('instagram-node-lib');
 var ig = require('instagram-node').instagram();
 var bodyParser = require('body-parser');
 
-//Instagram.set('client_id', config.instagram_client_id);
-//Instagram.set('client_secret', config.instagram_client_secret);
-//Instagram.set('access_token', config.instagram_access_token);
 
 ig.use({
     access_token: config.instagram_access_token,
@@ -51,7 +47,6 @@ app.use('/likes/', function (req, res) {
 });
 
 app.use('/api/photos/:tag', jsonParser, function (req, res) {
-    //ig.users(config.instagram_user_id, function(err, result) {
     ig.user_self_media_recent(function(err, result) {
         if(err) {
             console.log(err);
