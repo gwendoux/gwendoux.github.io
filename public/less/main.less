@@ -2,8 +2,9 @@
 @import 'partials/fonts.less';
 @import 'partials/icons.less';
 
-@main-font: 'Roboto Light', sans-serif;
-@sub-font: 'Roboto Thin', sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,100);
+
+@main-font: 'Roboto', sans-serif;
 @fancy-font: 'Megrim', cursive;
 @font-size: 16px;
 
@@ -32,9 +33,23 @@
 body {
   color: @grey;
   font-size: @font-size;
+  font-weight: 300;
 }
 
+p, li {
+  font-size: 1.125em;
+  line-height: 1.435em;
+}
 
+.padding {
+  padding: 1em;
+}
+ul {
+  padding-left: .75em;
+}
+.container {
+  max-width: 970px;
+}
 header {
   //max-height: 600px;
   overflow: hidden;
@@ -55,11 +70,19 @@ header {
   }
 
   .name {
-    font-size: 2.75em;
+    font-size: 2.975em;
     position: absolute;
     top: 50px;
     left: 50px;
     color: @white;
+    line-height: 1.2em;
+    @media (max-width: 700px) {
+      top: 30px;
+      left: 30px;
+    }
+    @media (max-width: 400px) {
+      font-size: 2.5em;
+    }
   }
 
   .titles {
@@ -67,7 +90,11 @@ header {
     bottom: 40%;
     width: 100%;
     text-align: center;
-
+    padding: 1em;
+    background-color: rgba(126,176,136,.25);
+    @media (max-height: 700px) {
+      bottom: 25%;
+    }
     @media screen and (min-width: @screen-lg) {
       bottom: 50%;
     }
@@ -80,10 +107,13 @@ header {
   }
   h1 {
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 2.5em;
+    font-weight: 300;
+    font-size: 4em;
     letter-spacing: 0.06em;
     margin-bottom: @margin;
+    @media (max-height: 700px) {
+      font-size: 2.75em;
+    }
     span {
       display: block;
       @media screen and (min-width: @screen-md) {
@@ -93,10 +123,13 @@ header {
   }
 
   h2 {
-    font-size: 16px;
+    font-size: 2.8em;
+    font-weight: 100;
     width: 70%;
     margin: 0 auto;
-
+    @media (max-height: 700px) {
+      font-size: 2em;
+    }
     @media screen and (min-width: @screen-lg) {
       width: 100%;
       margin: 0;
@@ -111,7 +144,11 @@ header {
    top: 55px;
    right: 50px;
    overflow: hidden;
-
+   @media (max-width: 700px) {
+     top: 100px;
+     left: 30px;
+     right: auto;
+   }
     a {
       float: left;
       height: 3em;
@@ -172,7 +209,7 @@ header {
       }
     }
     .description {
-      font-family: @sub-font;
+      font-weight: 100;
       font-size: 12px;
       background: @white;
       color: @mediumgrey;
@@ -204,7 +241,7 @@ header {
     }
   }
   .description {
-    font-family: @sub-font;
+    font-weight: 100;
     font-size: 12px;
     background: @white;
     color: @mediumgrey;
@@ -227,25 +264,16 @@ footer {
   }
 
   h4 {
-    font-size: 36px;
+    font-size: 2em;
     text-align: center;
-    font-weight: 700;
+    font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
 
-  .about-text {
-    padding: 0 @padding*3;
-
-    @media screen and (min-width: @screen-lg) {
-      width: 650px;
-      margin: 0 auto;
-    }
-  }
-
   .contact-now-btn {
     display: inline-block;
-    width: 70%;
+    width: 90%;
     padding: @padding*2 @padding*5;
     margin-top: @margin*2;
     color: @white;
