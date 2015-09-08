@@ -39,6 +39,9 @@ body {
 p, li {
   font-size: 1.125em;
   line-height: 1.435em;
+  @media (min-width: 1120px) {
+    font-size: 1.25em;
+  }
 }
 
 .padding {
@@ -93,7 +96,7 @@ header {
     padding: 1em;
     background-color: rgba(126,176,136,.25);
     @media (max-height: 700px) {
-      bottom: 25%;
+      bottom: 20%;
     }
     @media screen and (min-width: @screen-lg) {
       bottom: 50%;
