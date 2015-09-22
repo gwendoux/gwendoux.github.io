@@ -193,6 +193,19 @@ header {
   text-align: center;
 }
 
+p {
+  .hyphenate;
+}
+
+.hyphenate {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
 .instagram-content {
   h3 {
     text-transform: uppercase;
