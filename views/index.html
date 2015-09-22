@@ -77,9 +77,20 @@
                 <div class="row photos-wrap">
                   <div id="instafeed">
                     <div class="text-centered">
-                      <img src="https://media.giphy.com/media/dIw6T67vqxfCo/giphy.gif" />
+                      {% for item in data %}
+                      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                        <div class="photo-box">
+                          <div class="image-wrap">
+                            <img src="{{item.image_standard}}">
+                          </div>
+                          <div class="description">
+                            {{item.caption}}
+                            <div class="date">{{item.date}}</div>
+                          </div>
+                        </div>
+                      </div>
+                      {% endfor %}
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -102,6 +113,5 @@
       <section class="footer-bottom">
         2015 &copy; Gwen Doux. <a href="https://github.com/gwendoux/gwendoux">see what' going on under</a>
       </section>
-      <script type="text/javascript" src="/js/script.min.js"></script>
-    </body>
-    </html>
+  </body>
+</html>
