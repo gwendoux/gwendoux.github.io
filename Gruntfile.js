@@ -27,16 +27,16 @@ module.exports = function(grunt) {
         'clean:postprocess'
     ]);
 
-    grunt.registerTask('js', [
+    /*grunt.registerTask('js', [
         'browserify',
         'uglify',
         'clean:postprocess'
-    ]);
+    ]);*/
 
     grunt.registerTask('build', [
         'clean:build',
-        'jshint:client',
-        'js',
+        'test',
+        //'js',
         'css',
         'notify:build'
     ]);
@@ -85,15 +85,15 @@ module.exports = function(grunt) {
             }
         },
 
-        browserify: {
+        /*browserify: {
             dist: {
                 files: {
                     '<%= config.src %>/js/script.js': ['<%= config.src %>/js/behavior.js'],
                 }
             }
-        },
+        },*/
 
-        uglify : {
+        /*uglify : {
             options: {
                 report: 'gzip',
                 beautify: true,
@@ -105,7 +105,7 @@ module.exports = function(grunt) {
                 ],
                 dest: '<%= config.src %>/js/script.min.js'
             }
-        },
+        },*/
 
         less: {
             concat: {
@@ -155,10 +155,10 @@ module.exports = function(grunt) {
             less: {
                 files: ['<%= config.src %>/less/**/*.less'],
                 tasks: ['css', 'notify:reload']
-            },
-            js: {
-                files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
-                tasks: ['js', 'notify:reload']
+            //},
+            //js: {
+            //    files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
+            //    tasks: ['js', 'notify:reload']
             }
         },
         nodemon: {
