@@ -23,8 +23,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('css', [
         'less:concat',
-        'autoprefixer:dev',
-        'cssmin:compress',
+        'postcss',
         'clean:postprocess'
     ]);
 
@@ -115,24 +114,20 @@ module.exports = function(grunt) {
             }
         },
 
-        autoprefixer: {
+        postcss: {
             options: {
-                browsers: ['last 2 version', 'ie 9']
+                map: true,
+                report: 'gzip',
+                processors: [
+                    require('autoprefixer')({
+                        browsers: ['last 2 version', 'ie 9']
+                    }),
+                    require('csswring')
+                ]
             },
-            dev: {
-                src: '<%= config.src %>/css/main.css'
-            }
-        },
-
-        cssmin: {
-            compress: {
-                options: {
-                    report: 'gzip'
-                },
-                files: {
-                    '<%= config.src %>/css/main.min.css':
-                    ['<%= config.src %>/css/main.css']
-                }
+            css: {
+                src: '<%= config.src %>/css/main.css',
+                dest: '<%= config.src %>/css/main.min.css'
             }
         },
 
