@@ -1,13 +1,11 @@
-//https://www.npmjs.com/package/instagram-node
-//http://www.programmableweb.com/news/how-to-create-instagram-photo-printing-app-node.js/how-to/2015/07/23
-
 var express = require ('express');
 var nunjucks  = require('nunjucks');
 var path = require('path');
 var logger = require('morgan');
+var moment = require('moment');
 var config = require('./lib/config');
 var ig = require('instagram-node').instagram();
-var bodyParser = require('body-parser');
+//var bodyParser = require('body-parser');
 
 
 ig.use({
@@ -17,7 +15,7 @@ ig.use({
 });
 
 var app = express();
-var jsonParser = bodyParser.json();
+//var jsonParser = bodyParser.json();
 
 app.use(logger('dev'));
 app.use('/', express.static(__dirname + '/public'));
@@ -29,7 +27,23 @@ nunjucks.configure(path.join(__dirname, 'views'), {
 app.set('port', process.env.PORT || 8014);
 
 app.get('/', function (req, res) {
-    res.render('index.html');
+    ig.user_self_media_recent(function(err, result) {
+        if(err) {
+            console.log(err);
+            throw err;
+        }
+        var coffeeBeans = result.filter(function(photo) {
+            return photo.tags.indexOf('coffeeoftheday') > -1;
+        })
+        .map(function(photo) {
+            return {
+                image_standard: photo.images.standard_resolution.url,
+                caption: photo.caption.text,
+                date: moment(photo.created_time, 'X').fromNow()
+            };
+        });
+        res.render('index.html', {data: coffeeBeans});
+    });
 });
 
 app.get('/resume', function (req, res) {
@@ -46,7 +60,7 @@ app.use('/likes/', function (req, res) {
     });
 });
 
-app.use('/api/photos/:tag', jsonParser, function (req, res) {
+/*app.use('/api/photos/:tag', jsonParser, function (req, res) {
     ig.user_self_media_recent(function(err, result) {
         if(err) {
             console.log(err);
@@ -58,9 +72,9 @@ app.use('/api/photos/:tag', jsonParser, function (req, res) {
         res.setHeader('Content-Type', 'text/plain');
         res.end(JSON.stringify(coffeeBeans, null, 2));
     });
-});
+});*/
 
-app.use('/api/likes/', jsonParser, function (req, res) {
+/*app.use('/api/likes/', jsonParser, function (req, res) {
     ig.user_self_liked(function(err, data){
         if(err) {
             console.log(err);
@@ -69,7 +83,7 @@ app.use('/api/likes/', jsonParser, function (req, res) {
         res.setHeader('Content-Type', 'text/plain');
         res.end(JSON.stringify(data, null, 2));
     });
-});
+});*/
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
