@@ -72,12 +72,14 @@
       <section class="content-wrap-alt padding">
         <div class="container">
           <div class="row">
-            <h2>Someting to read</h2>
+            <h3 class="special-header">
+              Reading List <small>#somethingtoread</small>
+            </h3>
             {% for item in feed %}
             <div class="col-md-4 col-xs-12 reading-list">
               <div class="link-wrap">
                 <a class="block-link" href="{{item.url}}">
-                  <h3>{{item.title}}</h3>
+                  <h4>{{item.title}}</h4>
                   <p><em>{{item.desc}}</em></p>
                   <p class="smaller"><em>saved {{item.date}}</em></p>
                   <p class="smaller">source: {{item.source}}</p>
@@ -88,7 +90,7 @@
           </div>
           <div class="row">
             <div class="col-md-12 col-xs-12 text-centered">
-              <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">&nbsp; More on pinboard.in/gwendoux</a>
+              <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">&nbsp; More on my Pinboard</a>
             </div>
           </div>
         </div>
