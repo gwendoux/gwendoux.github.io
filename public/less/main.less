@@ -2,9 +2,7 @@
 @import 'partials/fonts.less';
 @import 'partials/icons.less';
 
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,100);
-
-@main-font: 'Roboto', sans-serif;
+@main-font: 'Roboto Light', sans-serif;
 @fancy-font: 'Megrim', cursive;
 @font-size: 16px;
 
@@ -21,7 +19,6 @@
 /*
 * Override Bootstrap variables
 */
-@font-family-sans-serif: @main-font;
 
 @import './public/less/vendors/bootstrap-3.2.0/bootstrap.less';
 
@@ -31,6 +28,7 @@
 }
 
 body {
+  font-family: @main-font;
   color: @grey;
   font-size: @font-size;
   font-weight: 300;
@@ -109,6 +107,7 @@ header {
     margin: 0;
   }
   h1 {
+    font-family: 'Roboto Bold', sans-serif;
     text-transform: uppercase;
     font-weight: 300;
     font-size: 4em;
@@ -126,6 +125,7 @@ header {
   }
 
   h2 {
+    font-family: 'Roboto thin', sans-serif;
     font-size: 2.8em;
     font-weight: 100;
     width: 70%;
