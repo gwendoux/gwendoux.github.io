@@ -79,7 +79,8 @@ header {
     line-height: 1.2em;
     @media (max-width: 700px) {
       top: 30px;
-      left: 30px;
+      left: 25%;
+      margin-left: -7.5%;
     }
     @media (max-width: 400px) {
       font-size: 2.5em;
@@ -149,7 +150,7 @@ header {
    overflow: hidden;
    @media (max-width: 700px) {
      top: 100px;
-     left: 30px;
+     left: 25%;
      right: auto;
    }
     a {
@@ -177,6 +178,32 @@ header {
    }
   }
 }
+
+.scroll-to-next {
+  position: absolute;
+  bottom: 1em;;
+  left: 0;
+  right: 0;
+  text-align: center;
+  a:hover, a:active {
+    text-decoration: none;
+  }
+}
+.arrows {
+	width: 60px;
+	height: 72px;
+	position: absolute;
+	left: 50%;
+	margin-left: -30px;
+	bottom: 20px;
+}
+
+.arrows path {
+	stroke: white;
+	fill: transparent;
+	stroke-width: 1px;
+}
+
 
 .cover-wrapper {
     position: relative;
