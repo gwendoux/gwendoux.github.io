@@ -18,7 +18,6 @@
         <div class="social">
           <a class="ss-octocat" href="https://github.com/gwendoux/">Git</a>
           <a class="ss-twitter" href="https://twitter.com/gwendoux">Twi</a>
-          <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">Pin</a>
           <a class="ss-instagram" href="https://instagram.com/gwendoux/">Ins</a>
         </div>
     </header>
@@ -69,6 +68,27 @@
         </div>
       </section>
 
+      <section class="content-wrap-alt padding">
+        <div class="container">
+          <div class="row">
+            <h2>Someting to read</h2>
+            {% for item in feed %}
+            <div class="col-md-4 col-xs-12">
+              <h3>{{item.title}}</h3>
+              <p>{{item.desc}}</p>
+              <p>saved {{item.date}}</p>
+              <a href="{{item.url}}">{{item.url}}</a>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">&nbsp; More on pinboard.in/gwendoux</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="content-wrap">
         <div class="container">
           <div class="row">
@@ -78,7 +98,7 @@
                 <div class="row photos-wrap">
                   <div id="instafeed">
                     <div class="text-centered">
-                      {% for item in data %}
+                      {% for item in coffeeBeans %}
                       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="photo-box">
                           <div class="image-wrap">
