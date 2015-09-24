@@ -1,11 +1,13 @@
 var express = require ('express');
 var nunjucks  = require('nunjucks');
 var path = require('path');
+var async = require('async');
 var morgan = require('morgan');
 var logger = require('loglevel');
 var moment = require('moment');
 var config = require('./lib/config');
 var ig = require('instagram-node').instagram();
+var parser = require('parse-rss');
 
 ig.use({
     access_token: config.instagram_access_token,
@@ -25,22 +27,47 @@ nunjucks.configure(path.join(__dirname, 'views'), {
 app.set('port', process.env.PORT || 8014);
 
 app.get('/', function (req, res) {
-    ig.user_self_media_recent(function(err, result) {
-        if(err) {
-            console.log(err);
-            throw err;
+    var data = {};
+    async.parallel([
+        function(callback) {
+            ig.user_self_media_recent(function(err, result) {
+                if(err) {
+                    console.log(err);
+                    throw err;
+                }
+                data.coffeeBeans = result.filter(function(photo) {
+                    return photo.tags.indexOf('coffeeoftheday') > -1;
+                })
+                .map(function(photo) {
+                    return {
+                        image_standard: photo.images.standard_resolution.url,
+                        caption: photo.caption.text,
+                        date: moment(photo.created_time, 'X').fromNow()
+                    };
+                });
+                callback();
+            });
+        },
+        function(callback) {
+            parser(config.pinboard_feed,function(err, json) {
+                if(err) {
+                    logger.debug(err);
+                    throw err;
+                }
+                data.feed = json.slice(0, 3).map(function(json) {
+                    return {
+                        title: json.title,
+                        desc: json.description,
+                        url: json.link,
+                        date: moment(json.date).fromNow()
+                    };
+                });
+                callback();
+            });
         }
-        var coffeeBeans = result.filter(function(photo) {
-            return photo.tags.indexOf('coffeeoftheday') > -1;
-        })
-        .map(function(photo) {
-            return {
-                image_standard: photo.images.standard_resolution.url,
-                caption: photo.caption.text,
-                date: moment(photo.created_time, 'X').fromNow()
-            };
-        });
-        res.render('index.html', {data: coffeeBeans});
+    ], function(err) {
+        if (err) {throw err;}
+        res.render('index.html', data);
     });
 });
 
