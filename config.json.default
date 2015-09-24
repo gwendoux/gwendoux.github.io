@@ -6,5 +6,8 @@
         "WEBSITE_URL": "",
         "REDIRECT_URI": "",
         "ACCESS_TOKEN": ""
+    },
+    "pinboard": {
+        "feed_url": ""
     }
 }

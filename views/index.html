@@ -11,22 +11,29 @@
     <div class="name fancy-font">
           gwendoux.com
     </div>
-        <div class="titles">
-          <h1>Hello! <span>I'm Gwen</span></h1>
-          <h2>I'm make stuff on the internets</h2>
-        </div>
-        <div class="social">
-          <a class="ss-octocat" href="https://github.com/gwendoux/">Git</a>
-          <a class="ss-twitter" href="https://twitter.com/gwendoux">Twi</a>
-          <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">Pin</a>
-          <a class="ss-instagram" href="https://instagram.com/gwendoux/">Ins</a>
-        </div>
+    <div class="titles">
+      <h1>Hello! <span>I'm Gwen</span></h1>
+      <h2>I'm make stuff on the internets</h2>
+    </div>
+    <div class="social">
+      <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">Pin</a>
+      <a class="ss-octocat" href="https://github.com/gwendoux/">Git</a>
+      <a class="ss-twitter" href="https://twitter.com/gwendoux">Twi</a>
+      <a class="ss-instagram" href="https://instagram.com/gwendoux/">Ins</a>
+    </div>
+    <div class="scroll-to-next">
+      <a href="#next">
+        <svg class="arrows">
+					<path d="M0 20 L30 52 L60 20"></path>
+				</svg>
+      </a>
+    </div>
     </header>
 
       <section class="content-wrap padding">
         <div class="container">
           <div class="row">
-            <h2>Overview</h2>
+            <h2 id="next">Overview</h2>
             <div class="col-md-12 col-xs-12">
                 <p>Hi there!</p>
                 <p>I'm a web developer/UX designer from Paris. I'm mostly work on product from my employer, the "Compagnie nationale des commissaires aux comptes" (<a href="https://www.cncc.fr">www.cncc.fr</a>). Day to day I'm working with tools like LESS, Grunt, Git and Javascript but since january 2015, I'm focused on delivery a webapp powered by Ember.</p>
@@ -69,6 +76,33 @@
         </div>
       </section>
 
+      <section class="content-wrap-alt padding">
+        <div class="container">
+          <div class="row">
+            <h3 class="special-header">
+              Reading List <small>#somethingtoread</small>
+            </h3>
+            {% for item in feed %}
+            <div class="col-md-4 col-xs-12 reading-list">
+              <div class="link-wrap">
+                <a class="block-link" href="{{item.url}}">
+                  <h4>{{item.title}}</h4>
+                  <p><em>{{item.desc}}</em></p>
+                  <p class="smaller"><em>saved {{item.date}}</em></p>
+                  <p class="smaller">source: {{item.source}}</p>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="row">
+            <div class="col-md-12 col-xs-12 text-centered">
+              <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">&nbsp; More on my Pinboard</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="content-wrap">
         <div class="container">
           <div class="row">
@@ -78,7 +112,7 @@
                 <div class="row photos-wrap">
                   <div id="instafeed">
                     <div class="text-centered">
-                      {% for item in data %}
+                      {% for item in coffeeBeans %}
                       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="photo-box">
                           <div class="image-wrap">

@@ -30,11 +30,14 @@
     "time-grunt": "1.2.1"
   },
   "dependencies": {
+    "async": "^1.4.2",
     "express": "^4.13.3",
     "instagram-node": "^0.5.8",
+    "loglevel": "^1.4.0",
     "moment": "^2.10.6",
     "morgan": "^1.6.1",
-    "nunjucks": "^2.1.0"
+    "nunjucks": "^2.1.0",
+    "parse-rss": "^1.0.3"
   },
   "scripts": {
     "preinstall": "npm prune",
