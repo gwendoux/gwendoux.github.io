@@ -74,16 +74,20 @@
           <div class="row">
             <h2>Someting to read</h2>
             {% for item in feed %}
-            <div class="col-md-4 col-xs-12">
-              <h3>{{item.title}}</h3>
-              <p>{{item.desc}}</p>
-              <p>saved {{item.date}}</p>
-              <a href="{{item.url}}">{{item.url}}</a>
+            <div class="col-md-4 col-xs-12 reading-list">
+              <div class="link-wrap">
+                <a class="block-link" href="{{item.url}}">
+                  <h3>{{item.title}}</h3>
+                  <p><em>{{item.desc}}</em></p>
+                  <p class="smaller"><em>saved {{item.date}}</em></p>
+                  <p class="smaller">source: {{item.source}}</p>
+                </a>
+              </div>
             </div>
             {% endfor %}
           </div>
           <div class="row">
-            <div class="col-md-12 col-xs-12">
+            <div class="col-md-12 col-xs-12 text-centered">
               <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">&nbsp; More on pinboard.in/gwendoux</a>
             </div>
           </div>
