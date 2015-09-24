@@ -1,12 +1,11 @@
 var express = require ('express');
 var nunjucks  = require('nunjucks');
 var path = require('path');
-var logger = require('morgan');
+var morgan = require('morgan');
+var logger = require('loglevel');
 var moment = require('moment');
 var config = require('./lib/config');
 var ig = require('instagram-node').instagram();
-//var bodyParser = require('body-parser');
-
 
 ig.use({
     access_token: config.instagram_access_token,
@@ -15,9 +14,8 @@ ig.use({
 });
 
 var app = express();
-//var jsonParser = bodyParser.json();
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use('/', express.static(__dirname + '/public'));
 nunjucks.configure(path.join(__dirname, 'views'), {
     autoescape: true,
