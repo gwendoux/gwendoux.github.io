@@ -84,6 +84,9 @@ header {
     }
     @media (max-width: 400px) {
       font-size: 2.5em;
+      position: static;
+      text-align: center;
+      margin-left: 0;
     }
   }
 
@@ -95,10 +98,13 @@ header {
     padding: 1em;
     background-color: rgba(126,176,136,.25);
     @media (max-height: 700px) {
-      bottom: 20%;
+      bottom: 30%;
     }
     @media screen and (min-width: @screen-lg) {
       bottom: 50%;
+    }
+    @media (max-width: 320px) {
+      font-size: 90%;
     }
   }
 
@@ -149,9 +155,14 @@ header {
    right: 50px;
    overflow: hidden;
    @media (max-width: 700px) {
-     top: 100px;
+     top: 90px;
      left: 25%;
      right: auto;
+   }
+   @media (max-width: 400px) {
+     position: static;
+     text-align: center;
+     margin-top: 1em;
    }
     a {
       float: left;
@@ -162,6 +173,9 @@ header {
       position: relative;
       padding: .5em 1em;
       right: 9999px;
+      @media (max-width: 400px) {
+        float: none;
+      }
       &:before {
         color: @white;
         font-size: 2.4em;
@@ -195,7 +209,7 @@ header {
 	position: absolute;
 	left: 50%;
 	margin-left: -30px;
-	bottom: 20px;
+	bottom: 35px;
 }
 
 .arrows path {
