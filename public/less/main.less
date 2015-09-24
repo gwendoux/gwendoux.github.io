@@ -208,12 +208,30 @@ p {
   -moz-hyphens: auto;
   hyphens: auto;
 }
+.smaller {
+  font-size: 75%;
+}
+.reading-list {
+  display: inline-block;
+  padding: .5em;
+}
+
+.link-wrap {
+  display: inline-block;
+  padding: .5em .75em;
+  background-color: #fafafa;
+  a:hover, a:active {
+    text-decoration: none;
+    background-color: darken(#fafafa, 10%);
+    color: lighten(#444, 10%);
+  }
+}
 
 .instagram-content {
   h3 {
     text-transform: uppercase;
     letter-spacing: 0.5em;
-    font-size: 12px;
+    font-size: 1em;
     font-weight: 700;
     text-align: center;
     padding: @padding*5 0;
