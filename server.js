@@ -2,6 +2,7 @@ var express = require ('express');
 var nunjucks  = require('nunjucks');
 var path = require('path');
 var async = require('async');
+var url = require('url');
 var morgan = require('morgan');
 var logger = require('loglevel');
 var moment = require('moment');
@@ -59,7 +60,8 @@ app.get('/', function (req, res) {
                         title: json.title,
                         desc: json.description,
                         url: json.link,
-                        date: moment(json.date).fromNow()
+                        date: moment(json.date).fromNow(),
+                        source: url.parse(json.link,true).host
                     };
                 });
                 callback();
