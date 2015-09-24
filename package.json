@@ -40,7 +40,6 @@
     "parse-rss": "^1.0.3"
   },
   "scripts": {
-    "preinstall": "npm prune",
     "test": "grunt test"
   }
 }
