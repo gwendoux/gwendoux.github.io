@@ -24,7 +24,6 @@
     "grunt-contrib-less": "1.0.1",
     "grunt-contrib-watch": "0.6.1",
     "grunt-nodemon": "^0.4.0",
-    "grunt-notify": "0.4.1",
     "grunt-postcss": "^0.6.0",
     "load-grunt-tasks": "3.3.0",
     "time-grunt": "1.2.1"
@@ -41,6 +40,10 @@
     "parse-rss": "^1.0.3"
   },
   "scripts": {
-    "test": "grunt test"
+    "pretest": "grunt jshint",
+    "test": "grunt test",
+    "start-watch": "grunt start-watch",
+    "build": "grunt build",
+    "build-watch": "grunt build-watch"
   }
 }
