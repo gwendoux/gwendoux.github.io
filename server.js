@@ -9,6 +9,7 @@ var moment = require('moment');
 var config = require('./lib/config');
 var ig = require('instagram-node').instagram();
 var parser = require('parse-rss');
+var bodyParser = require('body-parser');
 
 ig.use({
     access_token: config.instagram_access_token,
@@ -17,6 +18,7 @@ ig.use({
 });
 
 var app = express();
+var jsonParser = bodyParser.json();
 
 app.use(morgan('dev'));
 app.use('/', express.static(__dirname + '/public'));
@@ -87,7 +89,7 @@ app.use('/likes/', function (req, res) {
     });
 });
 
-/*app.use('/api/photos/:tag', jsonParser, function (req, res) {
+app.use('/api/photos/:tag', jsonParser, function (req, res) {
     ig.user_self_media_recent(function(err, result) {
         if(err) {
             console.log(err);
@@ -99,9 +101,29 @@ app.use('/likes/', function (req, res) {
         res.setHeader('Content-Type', 'text/plain');
         res.end(JSON.stringify(coffeeBeans, null, 2));
     });
-});*/
+});
 
-/*app.use('/api/likes/', jsonParser, function (req, res) {
+app.use('/api/feed', jsonParser, function (req, res) {
+    parser(config.pinboard_feed,function(err, json) {
+        if(err) {
+            logger.debug(err);
+            throw err;
+        }
+        var dataFeed = json.slice(0, 3).map(function(json) {
+            return {
+                title: json.title,
+                desc: json.description,
+                url: json.link,
+                date: moment(json.date).fromNow(),
+                source: url.parse(json.link,true).host
+            };
+        });
+        res.setHeader('Content-Type', 'text/plain');
+        res.end(JSON.stringify(dataFeed, null, 2));
+    });
+});
+
+app.use('/api/likes/', jsonParser, function (req, res) {
     ig.user_self_liked(function(err, data){
         if(err) {
             console.log(err);
@@ -110,7 +132,7 @@ app.use('/likes/', function (req, res) {
         res.setHeader('Content-Type', 'text/plain');
         res.end(JSON.stringify(data, null, 2));
     });
-});*/
+});
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
