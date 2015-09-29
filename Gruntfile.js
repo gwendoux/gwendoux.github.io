@@ -7,18 +7,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', 'build');
 
     grunt.registerTask('test', [
-        'jshint'
-    ]);
-
-    grunt.registerTask('server', [
-        'jshint:server',
-        'nodemon'
-    ]);
-
-    grunt.registerTask('start', [
-        'build',
-        'notify:watch',
-        'concurrent'
     ]);
 
     grunt.registerTask('css', [
@@ -35,12 +23,20 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:build',
-        'test',
+        //'jshint:client',
         //'js',
-        'css',
-        'notify:build'
+        'css'
     ]);
 
+    grunt.registerTask('start-watch', [
+        'jshint:server',
+        'nodemon'
+    ]);
+
+    grunt.registerTask('build-watch', [
+        'build',
+        'watch'
+    ]);
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -154,11 +150,11 @@ module.exports = function(grunt) {
         watch: {
             less: {
                 files: ['<%= config.src %>/less/**/*.less'],
-                tasks: ['css', 'notify:reload']
+                tasks: ['css']
             //},
             //js: {
             //    files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
-            //    tasks: ['js', 'notify:reload']
+            //    tasks: ['js']
             }
         },
         nodemon: {
@@ -187,37 +183,6 @@ module.exports = function(grunt) {
                     logConcurrentOutput: true
                 }
             }
-        },
-
-        chmod: {
-            options: {
-                mode: '755'
-            },
-            www: {
-                src: ['<%= config.src %>/**']
-            },
-            server: {
-                src: ['www/**']
-            }
-        },
-
-        notify: {
-            watch: {
-                options: {
-                    message: 'Lint completed now Watch Less and Uglify tasks',
-                }
-            },
-            reload: {
-                options: {
-                    message: 'Reload completed',
-                }
-            },
-            build: {
-                options: {
-                    message: 'Build completed successfully!'
-                }
-            }
         }
-
     });
 };
