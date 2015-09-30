@@ -1,7 +1,6 @@
 var express = require ('express');
 var nunjucks  = require('nunjucks');
 var path = require('path');
-var async = require('async');
 var url = require('url');
 var morgan = require('morgan');
 var logger = require('loglevel');
@@ -30,49 +29,7 @@ nunjucks.configure(path.join(__dirname, 'views'), {
 app.set('port', process.env.PORT || 8014);
 
 app.get('/', function (req, res) {
-    var data = {};
-    async.parallel([
-        function(callback) {
-            ig.user_self_media_recent(function(err, result) {
-                if(err) {
-                    console.log(err);
-                    throw err;
-                }
-                data.coffeeBeans = result.filter(function(photo) {
-                    return photo.tags.indexOf('coffeeoftheday') > -1;
-                })
-                .map(function(photo) {
-                    return {
-                        image_standard: photo.images.standard_resolution.url,
-                        caption: photo.caption.text,
-                        date: moment(photo.created_time, 'X').fromNow()
-                    };
-                });
-                callback();
-            });
-        },
-        function(callback) {
-            parser(config.pinboard_feed,function(err, json) {
-                if(err) {
-                    logger.debug(err);
-                    throw err;
-                }
-                data.feed = json.slice(0, 3).map(function(json) {
-                    return {
-                        title: json.title,
-                        desc: json.description,
-                        url: json.link,
-                        date: moment(json.date).fromNow(),
-                        source: url.parse(json.link,true).host
-                    };
-                });
-                callback();
-            });
-        }
-    ], function(err) {
-        if (err) {throw err;}
-        res.render('index.html', data);
-    });
+    res.render('index.html');
 });
 
 app.get('/resume', function (req, res) {
@@ -97,6 +54,12 @@ app.use('/api/photos/:tag', jsonParser, function (req, res) {
         }
         var coffeeBeans = result.filter(function(photo) {
             return photo.tags.indexOf(req.params.tag) > -1;
+        }).map(function(photo) {
+            return {
+                image_standard: photo.images.standard_resolution.url,
+                caption: photo.caption.text,
+                date: moment(photo.created_time, 'X').fromNow()
+            };
         });
         res.setHeader('Content-Type', 'text/plain');
         res.end(JSON.stringify(coffeeBeans, null, 2));
