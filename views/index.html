@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width,user-scalable=no">
   <title>gwendoux.com</title>
   <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+  <script src="/js/script.min.js"></script>
 </head>
 <body>
   {% include "partials/tracking.html" %}
@@ -83,18 +84,7 @@
             <h2 class="special-header">
               Reading List <small>#somethingtoread</small>
             </h2>
-            {% for item in feed %}
-            <div class="col-md-4 col-xs-12 reading-list">
-              <div class="link-wrap">
-                <a class="block-link" href="{{item.url}}">
-                  <h4>{{item.title}}</h4>
-                  <p><em>{{item.desc}}</em></p>
-                  <p class="smaller"><em>saved {{item.date}}</em></p>
-                  <p class="smaller">source: {{item.source}}</p>
-                </a>
-              </div>
-            </div>
-            {% endfor %}
+            <div id="pinboardfeed"></div>
           </div>
           <div class="row">
             <div class="col-md-12 col-xs-12 text-centered">
@@ -111,23 +101,7 @@
               <div id="coffeebeans" class="instagram-content">
                 <h2 class="special-header" >Latest Coffee Beans <small>#coffeeoftheday</small></h2>
                 <div class="row photos-wrap">
-                  <div id="instafeed">
-                    <div class="text-centered">
-                      {% for item in coffeeBeans %}
-                      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                        <div class="photo-box">
-                          <div class="image-wrap">
-                            <img src="{{item.image_standard}}">
-                          </div>
-                          <div class="description">
-                            {{item.caption}}
-                            <div class="date">{{item.date}}</div>
-                          </div>
-                        </div>
-                      </div>
-                      {% endfor %}
-                    </div>
-                  </div>
+                  <div id="instafeed"></div>
                 </div>
               </div>
             </div>
