@@ -15,16 +15,16 @@ module.exports = function(grunt) {
         'clean:postprocess'
     ]);
 
-    /*grunt.registerTask('js', [
+    grunt.registerTask('js', [
         'browserify',
         'uglify',
         'clean:postprocess'
-    ]);*/
+    ]);
 
     grunt.registerTask('build', [
         'clean:build',
-        //'jshint:client',
-        //'js',
+        'jshint:client',
+        'js',
         'css'
     ]);
 
@@ -76,20 +76,20 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    src: ['<%= config.src %>/js/*.js']
+                    src: ['<%= config.src %>/js/lib/*.js']
                 }
             }
         },
 
-        /*browserify: {
+        browserify: {
             dist: {
                 files: {
-                    '<%= config.src %>/js/script.js': ['<%= config.src %>/js/behavior.js'],
+                    '<%= config.src %>/js/script.js': ['<%= config.src %>/js/lib/behavior.js'],
                 }
             }
-        },*/
+        },
 
-        /*uglify : {
+        uglify : {
             options: {
                 report: 'gzip',
                 beautify: true,
@@ -101,7 +101,7 @@ module.exports = function(grunt) {
                 ],
                 dest: '<%= config.src %>/js/script.min.js'
             }
-        },*/
+        },
 
         less: {
             concat: {
@@ -151,10 +151,10 @@ module.exports = function(grunt) {
             less: {
                 files: ['<%= config.src %>/less/**/*.less'],
                 tasks: ['css']
-            //},
-            //js: {
-            //    files: ['Gruntfile.js', '<%= config.src %>/js/**/*.js'],
-            //    tasks: ['js']
+            },
+            js: {
+                files: ['Gruntfile.js', '<%= config.src %>/js/lib/*.js', '!*.min.js'],
+                tasks: ['js']
             }
         },
         nodemon: {
