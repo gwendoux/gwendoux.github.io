@@ -84,7 +84,9 @@
             <h2 class="special-header">
               Reading List <small>#somethingtoread</small>
             </h2>
-            <div id="pinboardfeed"></div>
+            <div id="pinboardfeed">
+              {% include "partials/loader.html" %}
+            </div>
           </div>
           <div class="row">
             <div class="col-md-12 col-xs-12 text-centered">
@@ -101,7 +103,9 @@
               <div id="coffeebeans" class="instagram-content">
                 <h2 class="special-header" >Latest Coffee Beans <small>#coffeeoftheday</small></h2>
                 <div class="row photos-wrap">
-                  <div id="instafeed"></div>
+                  <div id="instafeed">
+                    {% include "partials/loader.html" %}
+                  </div>
                 </div>
               </div>
             </div>
