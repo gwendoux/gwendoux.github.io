@@ -63,7 +63,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     src: ['**/*.json', '**/*.js',
-                          '!public/js/*.js'
+                          '!public/js/**/*.js'
                          ]
                 }
             },
@@ -76,7 +76,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    src: ['<%= config.src %>/js/lib/*.js']
+                    src: ['<%= config.src %>/js/*.js']
                 }
             }
         },
