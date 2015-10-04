@@ -170,7 +170,7 @@ module.exports = function(grunt) {
                     },
                     cwd: __dirname,
                     ignore: ['node_modules/**', 'Gruntfile.js'],
-                    watch: ['server.js'],
+                    watch: ['server.js', 'views/**', 'lib/**'],
                     delay: 1000
                 }
             }
