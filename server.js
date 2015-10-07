@@ -5,6 +5,7 @@ var url = require('url');
 var morgan = require('morgan');
 var logger = require('loglevel');
 var moment = require('moment');
+var escape = require('escape-html');
 var config = require('./lib/config');
 var ig = require('instagram-node').instagram();
 var parser = require('parse-rss');
@@ -57,7 +58,7 @@ app.use('/api/photos/:tag', jsonParser, function (req, res) {
         }).map(function(photo) {
             return {
                 image_standard: photo.images.standard_resolution.url,
-                caption: photo.caption.text,
+                caption: escape(photo.caption.text),
                 date: moment(photo.created_time, 'X').fromNow()
             };
         });
@@ -74,8 +75,8 @@ app.use('/api/feed', jsonParser, function (req, res) {
         }
         var dataFeed = json.slice(0, 3).map(function(json) {
             return {
-                title: json.title,
-                desc: json.description,
+                title: escape(json.title),
+                desc: escape(json.description),
                 url: json.link,
                 date: moment(json.date).fromNow(),
                 source: url.parse(json.link,true).host
