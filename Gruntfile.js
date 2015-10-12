@@ -7,6 +7,7 @@ module.exports = function(grunt) {
     grunt.registerTask('default', 'build');
 
     grunt.registerTask('test', [
+        "mochaTest"
     ]);
 
     grunt.registerTask('css', [
@@ -29,7 +30,6 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('start-watch', [
-        'jshint:server',
         'nodemon'
     ]);
 
@@ -63,7 +63,8 @@ module.exports = function(grunt) {
                 },
                 files: {
                     src: ['**/*.json', '**/*.js',
-                          '!public/js/**/*.js'
+                          '!public/js/**/*.js',
+                          '!test/**/*.js'
                          ]
                 }
             },
@@ -78,6 +79,27 @@ module.exports = function(grunt) {
                 files: {
                     src: ['<%= config.src %>/js/*.js']
                 }
+            }
+        },
+
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                    ignoreLeaks: false,
+                    require: 'test/coverage/blanket_conf'
+                },
+                src: ['test/*.js']
+            },
+            coverage: {
+                options: {
+                    reporter: 'html-cov',
+                    // To suppress the mocha console output from the coverage
+                    // report.
+                    quiet: true,
+                    captureFile: 'test/coverage/report.html'
+                },
+                src: ['test/*.js']
             }
         },
 
@@ -170,7 +192,7 @@ module.exports = function(grunt) {
                     },
                     cwd: __dirname,
                     ignore: ['node_modules/**', 'Gruntfile.js'],
-                    watch: ['server.js', 'views/**', 'lib/**', 'routes/**'],
+                    watch: ['server.js', 'views/**/*.js', 'lib/**/*.js', 'routes/**/*.js'],
                     delay: 1000
                 }
             }
