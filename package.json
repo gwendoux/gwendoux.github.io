@@ -51,6 +51,7 @@
   "scripts": {
     "pretest": "grunt jshint:server",
     "test": "grunt test",
+    "prestart": "grunt jshint:server",
     "start-watch": "grunt start-watch",
     "build": "grunt build",
     "build-watch": "grunt build-watch"
