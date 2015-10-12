@@ -20,3 +20,4 @@ node_modules/
 *.min.js
 www/css
 config.json
+test/coverage/report.html
