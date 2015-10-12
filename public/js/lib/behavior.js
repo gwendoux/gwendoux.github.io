@@ -7,7 +7,7 @@ var $ = require('jquery');
 
         var coffeeRq = '/api/photos/coffeeoftheday';
 
-        $.getJSON(coffeeRq, function(data){
+        $.getJSON(coffeeRq).done(function(data){
             var html = [];
             data = data.slice(0, 4);
             $.each(data, function(key, val) {
@@ -24,11 +24,14 @@ var $ = require('jquery');
                 html.push('</div>');
             });
             $('#instafeed').html(html.join(''));
+        }).fail(function(error) {
+            console.log(error);
+            $('#instafeed').html('<div class="alert">cannot get data from instagram</div>');
         });
 
         var feedRq = '/api/feed';
 
-        $.getJSON(feedRq, function(data){
+        $.getJSON(feedRq).done(function(data){
             var html = [];
             $.each(data, function(key, val) {
                 html.push('<div class="col-md-4 col-xs-12 reading-list">');
@@ -43,6 +46,9 @@ var $ = require('jquery');
                 html.push('</div>');
             });
             $('#pinboardfeed').html(html.join(''));
+        }).fail(function(error) {
+            console.log(error);
+            $('#pinboardfeed').html('<div class="alert">cannot get data from pinboard</div>');
         });
     });
 }()); // Immediately-Invoked Function Expression (IIFE)
