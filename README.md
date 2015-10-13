@@ -25,7 +25,10 @@ gwendoux.com -- personal website
 # Todolist
 
 * [ ] remove bootstrap
-* [ ] switched icon font to svg
+* [X] switched icon font to svg
 * [ ] better build script
 * [ ] better deployment script
 * [ ] work on font performance
+* [ ] use flexbox layout
+* [ ] replace jshitn with eslint
+* [ ] use css linter ?
