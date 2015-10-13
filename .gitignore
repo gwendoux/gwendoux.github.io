@@ -21,3 +21,5 @@ node_modules/
 www/css
 config.json
 test/coverage/report.html
+ss--*.svg
+_ss-*.html
