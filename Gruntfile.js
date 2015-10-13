@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = function(grunt) {
     'use strict';
 
@@ -5,6 +7,10 @@ module.exports = function(grunt) {
     require('time-grunt')(grunt);
 
     grunt.registerTask('default', 'build');
+
+    grunt.registerTask('lint', [
+        "jshint"
+    ]);
 
     grunt.registerTask('test', [
         "mochaTest"
@@ -14,6 +20,11 @@ module.exports = function(grunt) {
         'less:concat',
         'postcss',
         'clean:postprocess'
+    ]);
+
+    grunt.registerTask('svg', [
+        'svgstore',
+        'svg2template'
     ]);
 
     grunt.registerTask('js', [
@@ -26,6 +37,7 @@ module.exports = function(grunt) {
         'clean:build',
         'jshint:client',
         'js',
+        'svg',
         'css'
     ]);
 
@@ -77,7 +89,7 @@ module.exports = function(grunt) {
                     }
                 },
                 files: {
-                    src: ['<%= config.src %>/js/*.js']
+                    src: ['<%= config.src %>/js/lib/*.js']
                 }
             }
         },
@@ -113,9 +125,21 @@ module.exports = function(grunt) {
 
         uglify : {
             options: {
+                compress: {
+                    sequences: true,
+                    dead_code: true,
+                    conditionals: true,
+                    booleans: true,
+                    unused: true,
+                    if_return: true,
+                    join_vars: true,
+                    drop_console: true
+                },
+                //mangle: true,
                 report: 'gzip',
-                beautify: true,
-                compress: false
+                sourceMap: true,
+                screwIE8: true,
+                preserveComments: false
             },
             app: {
                 src: [
@@ -149,6 +173,21 @@ module.exports = function(grunt) {
             }
         },
 
+        svgstore: {
+            options: {
+                prefix: 'icon-',
+                cleanup: true,
+                cleanupdefs: true
+            },
+            // concatenate all svgs icons for sidoni reader
+            iconsSidoni : {
+                files: {
+                    'public/svg/dist/ss--index-icons.svg':
+                    'public/svg/index/*.svg',
+                },
+            },
+        },
+
         clean: {
             build: {
                 src: ['<%= config.src %>/css/*.min.css', '<%= config.src %>/js/*.min.js', '<%= config.src %>/js/*.map.js']
@@ -159,7 +198,8 @@ module.exports = function(grunt) {
             dist: ['dist']
         },
 
-        connect: {
+        // used express server instead
+        /*connect: {
             server: {
                 options: {
                     base: '<%= config.src %>',
@@ -167,18 +207,23 @@ module.exports = function(grunt) {
                     keepalive: true
                 }
             }
-        },
+        },*/
 
         watch: {
             less: {
                 files: ['<%= config.src %>/less/**/*.less'],
                 tasks: ['css']
             },
+            'svg': {
+                files: ['<%= config.src %>/svg/**/*.svg', '!<%= config.src %>/svg/*.svg'],
+                tasks: ['svg']
+            },
             js: {
                 files: ['Gruntfile.js', '<%= config.src %>/js/lib/*.js', '!*.min.js'],
                 tasks: ['js']
             }
         },
+
         nodemon: {
             dev: {
                 script: 'server.js',
@@ -192,7 +237,7 @@ module.exports = function(grunt) {
                     },
                     cwd: __dirname,
                     ignore: ['node_modules/**', 'Gruntfile.js'],
-                    watch: ['server.js', 'views/**/*.js', 'lib/**/*.js', 'routes/**/*.js'],
+                    watch: ['server.js', 'views/**/*.html', 'lib/**/*.js', 'routes/**/*.js'],
                     delay: 1000
                 }
             }
@@ -206,5 +251,14 @@ module.exports = function(grunt) {
                 }
             }
         }
+    });
+
+    grunt.registerTask('svg2template', function() {
+        grunt.file.recurse('public/svg/dist/', function(file) {
+            if(path.extname(file) === '.svg') {
+                grunt.file.write('views/partials/_' + path.basename(file, '.svg') + '.html', '<span style="width:0;height:0;display:none;visibility:hidden;">' + grunt.file.read(file) + '</span>');
+                grunt.log.write(path.basename(file, '.svg') + ".html created");
+            }
+        });
     });
 };
