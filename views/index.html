@@ -7,6 +7,7 @@
   <script src="/js/script.min.js"></script>
 </head>
 <body>
+  {% include "partials/_ss--index-icons.html" %}
   <header class="cover-wrapper">
     <div class="name fancy-font">
           gwendoux.com
@@ -16,10 +17,18 @@
       <h2>I make stuff on the Internets</h2>
     </div>
     <div class="social">
-      <a class="ss-pinboard" href="https://pinboard.in/u:Gwendoux">Pin</a>
-      <a class="ss-octocat" href="https://github.com/gwendoux/">Git</a>
-      <a class="ss-twitter" href="https://twitter.com/gwendoux">Twi</a>
-      <a class="ss-instagram" href="https://instagram.com/gwendoux/">Ins</a>
+      <a class="ss-icon" href="https://pinboard.in/u:Gwendoux">
+        <svg class="icon-ss-pinboard"><use xlink:href="#icon-ss-pinboard"></use></svg>
+      </a>
+      <a class="ss-icon" href="https://github.com/gwendoux/">
+        <svg class="icon-ss-github"><use xlink:href="#icon-ss-github"></use></svg>
+      </a>
+      <a class="ss-icon" href="https://twitter.com/gwendoux">
+        <svg class="icon-ss-twitter"><use xlink:href="#icon-ss-twitter"></use></svg>
+      </a>
+      <a class="ss-icon" href="https://instagram.com/gwendoux/">
+        <svg class="icon-ss-instagram"><use xlink:href="#icon-ss-instagram"></use></svg>
+      </a>
     </div>
     <div class="scroll-to-next">
       <a href="#next">
