@@ -12,8 +12,8 @@
   ],
   "author": "gwendoux",
   "license": "ISC",
-  "engines" : {
-    "node" : "4.1.1"
+  "engines": {
+    "node": "4.1.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
@@ -32,6 +32,8 @@
     "grunt-mocha-test": "^0.12.7",
     "grunt-nodemon": "^0.4.0",
     "grunt-postcss": "^0.6.0",
+    "grunt-svgmin": "^2.0.1",
+    "grunt-svgstore": "^0.5.0",
     "load-grunt-tasks": "3.3.0",
     "mocha": "^2.3.3",
     "must": "^0.13.1",
@@ -52,7 +54,7 @@
     "parse-rss": "^1.0.3"
   },
   "scripts": {
-    "lint": "grunt jshint",
+    "lint": "grunt lint",
     "pretest": "npm run lint",
     "test": "grunt test",
     "prestart": "npm run lint",
