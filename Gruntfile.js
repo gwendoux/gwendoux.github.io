@@ -17,7 +17,7 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('css', [
-        'less:concat',
+        'less',
         'postcss',
         'clean:postprocess'
     ]);
@@ -153,6 +153,10 @@ module.exports = function(grunt) {
             concat: {
                 src: ['<%= config.src %>/less/main.less'],
                 dest: '<%= config.src %>/css/main.css'
+            },
+            resume: {
+                src: ['<%= config.src %>/less/resume.less'],
+                dest: '<%= config.src %>/css/resume.css'
             }
         },
 
@@ -167,9 +171,13 @@ module.exports = function(grunt) {
                     require('cssnano')
                 ]
             },
-            css: {
+            index: {
                 src: '<%= config.src %>/css/main.css',
                 dest: '<%= config.src %>/css/main.min.css'
+            },
+            resume: {
+                src: '<%= config.src %>/css/resume.css',
+                dest: '<%= config.src %>/css/resume.min.css'
             }
         },
 
@@ -179,13 +187,18 @@ module.exports = function(grunt) {
                 cleanup: true,
                 cleanupdefs: true
             },
-            // concatenate all svgs icons for sidoni reader
-            iconsSidoni : {
+            index : {
                 files: {
                     'public/svg/dist/ss--index-icons.svg':
                     'public/svg/index/*.svg',
-                },
+                }
             },
+            resume : {
+                files: {
+                    'public/svg/dist/ss--resume-icons.svg':
+                    'public/svg/resume/*.svg',
+                },
+            }
         },
 
         clean: {
@@ -193,7 +206,7 @@ module.exports = function(grunt) {
                 src: ['<%= config.src %>/css/*.min.css', '<%= config.src %>/js/*.min.js', '<%= config.src %>/js/*.map.js']
             },
             postprocess: {
-                src: ['<%= config.src %>/css/main.css', '<%= config.src %>/js/script.js']
+                src: ['<%= config.src %>/css/main.css', '<%= config.src %>/css/resume.css', '<%= config.src %>/js/script.js']
             },
             dist: ['dist']
         },
