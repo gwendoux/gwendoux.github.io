@@ -6,196 +6,11 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
 
 	<title>Gwenaël Doux</title>
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css">
-
-	<style type="text/css">
-	@font-face {
-		font-family: 'Roboto Light';
-	  src: url('/fonts/Roboto-Light-subset.woff2') format('woff2'),
-	       url('/fonts/Roboto-Light-subset.woff') format('woff');
-	  font-style:   normal;
-	  font-weight:  200;
-	}
-body {
-	background: #fff;
-	font-family: 'Roboto Light', sans-serif;
-	margin: 0 0 80px;
-}
-a {
-	color: #2ecc71;
-}
-a:focus,
-a:hover {
-	color: #f1c40f;
-	text-decoration: none;
-}
-p {
-	line-height: 1.5;
-	margin: 0;
-}
-p + p {
-	margin-top: 10px;
-}
-h1,
-h2,
-h3,
-h4 {
-	margin-top: 0
-}
-section {
-	margin-top: 30px;
-}
-li {
-	line-height: 1.8;
-	list-style: none;
-}
-li:before {
-	content: "\f052";
-	float: left;
-	font: 13px Octicons;
-	margin-top: 6px;
-	margin-left: -20px;
-	opacity: .1;
-	position: absolute;
-}
-blockquote {
-	border-left: 5px solid #e7e9ec;
-	font-size: 14px;
-}
-em {
-	color: #95a5a6;
-	font-weight: normal;
-	font-style: normal;
-}
-h4 span:first-child {
-	color: #000;
-	font-weight: bold;
-}
-.container {
-	max-width: 750px;
-	padding: 0 30px;
-}
-.col-sm-6 {
-	margin-bottom: 10px;
-}
-.col-sm-12 h4 {
-	margin-top: 12px;
-}
-.col-sm-12 + .col-sm-12 {
-	margin-top: 30px;
-}
-#header {
-	background: #f4f6f6;
-	padding: 50px 0;
-	margin-bottom: 30px;
-}
-#header h2 {
-	color: #95a5a6;
-	font-size: 24px;
-}
-#content h3 {
-	color: #f1c40f;
-	font-size: 26px;
-	margin-top: -4px;
-}
-#content aside {
-	text-align: right;
-	padding-right: 30px;
-}
-#profiles .network {
-	text-transform: capitalize;
-}
-#work .position,
-#volunteer .position {
-	font-weight: bold;
-	margin-bottom: 8px;
-}
-#education .area {
-	font-weight: bold;
-}
-#education .area:before {
-	content: "\f0d7";
-	font: 16px Octicons;
-	margin-right: 6px;
-}
-#education .studyType {
-	margin-left: 25px;
-}
-#awards .summary,
-#publications .summary {
-	margin-top: 8px;
-}
-#publications .website a:before {
-	content: attr(href);
-}
-
-@media (min-width: 480px) {
-	.strike-through {
-		border-top: 1px solid #f4f6f6;
-		height: 20px;
-		margin-top: 12px;
-		margin-bottom: -2px;
-		position: relative;
-	}
-	.strike-through span,
-	.strike-through a {
-		background: #fff;
-		position: absolute;
-	}
-	.strike-through span:first-child {
-		padding-right: 20px;
-		margin-top: -12px;
-	}
-	.strike-through span + span {
-		font-size: 14px;
-		margin-top: -10px;
-		padding-left: 20px;
-		right: 0;
-	}
-}
-@media (max-width: 768px) {
-	.col-sm-6:last-child {
-		margin-bottom: 0px;
-	}
-	#content aside {
-		margin-bottom: 20px;
-		padding-right: 0;
-		text-align: left;
-	}
-	#publications .website a:before {
-		content: "View publication";
-	}
-}
-@media (max-width: 480px) {
-	h1 {
-		font-size: 26px;
-	}
-	.date {
-		font-size: 14px;
-		margin-bottom: 5px;
-	}
-	.strike-through span:first-child {
-		margin-bottom: 7px;
-	}
-	.strike-through span {
-		display: block;
-	}
-	#header {
-		margin-bottom: 10px;
-		padding: 40px 0;
-	}
-	#actions {
-		display: none;
-	}
-}
-
-	</style>
-
+	<link rel="preload" href="/fonts/Roboto-Light-subset.woff">
+	<link rel="stylesheet" href="css/resume.min.css">
 	</head>
 	<body>
-  {% include "partials/_tracking.html" %}
+  {% include "partials/_ss--resume-icons.html" %}
 	<header id="header">
 		<div class="container">
 			<div class="row">
@@ -281,14 +96,30 @@ h4 span:first-child {
 				</div>
 				<h4>Missions</h4>
 				<ul class="highlights">
-					<li class="bullet">développement d'une application documentaire Ember / Node</li>
-					<li class="bullet">création d'un application de construction de sommaire d'ouvrage (Ember)</li>
-          <li class="bullet">prototypage d'une webapp documentaire desktop/mobile avec un mode hors ligne (Ember / Cordova)</li>
-					<li class="bullet">refonte des pages d'accueil du portail de la CNCC</li>
-          <li class="bullet">mise en place d'outils de gestion des ressources et de tâches pour le dévelopement et la construction d'applications au sein de la SI </li>
-					<li class="bullet">création d'une application de gestion de demande de publication (html/css/javascript/java) : spécifications, schéma des données, interface de navigation, design et developpement du front-end, intégration des jsp</li>
-					<li class="bullet">gestion et développement du site institutionnel,  du mini-site sur la réforme européenne, du portail documentaire et de l'intranet + emailing : design et intégration des emails</li>
-					<li class="bullet">gestion du site institutionnel, du portail documentaire et de l'intranet + emailing : design et intégration des emails</li>
+					<li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						développement d'une application documentaire Ember / Node</li>
+					<li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						création d'un application de construction de sommaire d'ouvrage (Ember)</li>
+          <li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						prototypage d'une webapp documentaire desktop/mobile avec un mode hors ligne (Ember / Cordova)</li>
+					<li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						refonte des pages d'accueil du portail de la CNCC</li>
+          <li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						mise en place d'outils de gestion des ressources et de tâches pour le dévelopement et la construction d'applications au sein de la SI </li>
+					<li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						création d'une application de gestion de demande de publication (html/css/javascript/java) : spécifications, schéma des données, interface de navigation, design et developpement du front-end, intégration des jsp</li>
+					<li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						gestion et développement du site institutionnel,  du mini-site sur la réforme européenne, du portail documentaire et de l'intranet + emailing : design et intégration des emails</li>
+					<li>
+						<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+						gestion du site institutionnel, du portail documentaire et de l'intranet + emailing : design et intégration des emails</li>
 				</ul>
 			</div>
 
@@ -310,11 +141,21 @@ h4 span:first-child {
 				</div>
 				<h4>Missions</h4>
 					<ul class="highlights">
-						<li class="bullet">Mission au sein de l'équipe Normes d'Orange </li>
-						<li class="bullet">Mise en place d'une plateforme wiki comme outils d'écriture collaborative</li>
-						<li class="bullet">Restructuration et adaptation de la version papier vers la plateforme numérique</li>
-						<li class="bullet">Sécurisation et gestion des droits</li>
-						<li class="bullet">Formation courte des différents utilisateurs sous forme de webinar (équipe multilingue sur plusieurs pays)</li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Mission au sein de l'équipe Normes d'Orange </li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Mise en place d'une plateforme wiki comme outils d'écriture collaborative</li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Restructuration et adaptation de la version papier vers la plateforme numérique</li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Sécurisation et gestion des droits</li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Formation courte des différents utilisateurs sous forme de webinar (équipe multilingue sur plusieurs pays)</li>
 					</ul>
 			</div>
 
@@ -333,9 +174,15 @@ h4 span:first-child {
 				</div>
 				<h4>Missions</h4>
 					<ul class="highlights">
-						<li class="bullet">Accueil et renseignements auprès des usagers</li>
-						<li class="bullet">Gestion de fond documentaire (musique puis jeunesse)</li>
-						<li class="bullet">Gestion d’équipe lors des heures publiques</li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Accueil et renseignements auprès des usagers</li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Gestion de fond documentaire (musique puis jeunesse)</li>
+						<li>
+							<svg class="icon-dot"><use xlink:href="#icon-octicon-dot"></use></svg>
+							Gestion d’équipe lors des heures publiques</li>
 					</ul>
 			</div>
 			</div>
