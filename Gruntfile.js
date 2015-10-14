@@ -41,10 +41,6 @@ module.exports = function(grunt) {
         'css'
     ]);
 
-    grunt.registerTask('start-watch', [
-        'nodemon'
-    ]);
-
     grunt.registerTask('build-watch', [
         'build',
         'watch'
@@ -234,25 +230,6 @@ module.exports = function(grunt) {
             js: {
                 files: ['Gruntfile.js', '<%= config.src %>/js/lib/*.js', '!*.min.js'],
                 tasks: ['js']
-            }
-        },
-
-        nodemon: {
-            dev: {
-                script: 'server.js',
-                options: {
-                    args: ['dev'],
-                    nodeArgs: ['--debug'],
-                    callback: function (nodemon) {
-                        nodemon.on('log', function (event) {
-                            console.log(event.colour);
-                        });
-                    },
-                    cwd: __dirname,
-                    ignore: ['node_modules/**', 'Gruntfile.js'],
-                    watch: ['server.js', 'views/**/*.html', 'lib/**/*.js', 'routes/**/*.js'],
-                    delay: 1000
-                }
             }
         },
 
