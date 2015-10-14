@@ -164,7 +164,7 @@ module.exports = function(grunt) {
                     require('autoprefixer')({
                         browsers: ['last 2 version', 'ie 9']
                     }),
-                    require('csswring')
+                    require('cssnano')
                 ]
             },
             css: {
