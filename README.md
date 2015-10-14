@@ -20,15 +20,3 @@ gwendoux.com -- personal website
 | start-watch | grunt start-watch |  |  | run server with nodemon watch |
 | build       | grunt build |  |  | build front resources |
 | build-watch | grunt build-watch |  |   | build and watch front resources |
-
-
-# Todolist
-
-* [ ] remove bootstrap
-* [X] switched icon font to svg
-* [ ] better build script
-* [ ] better deployment script
-* [ ] work on font performance
-* [ ] use flexbox layout
-* [ ] replace jshitn with eslint
-* [ ] use css linter ?
