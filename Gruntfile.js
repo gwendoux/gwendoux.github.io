@@ -181,7 +181,8 @@ module.exports = function(grunt) {
             options: {
                 prefix: 'icon-',
                 cleanup: true,
-                cleanupdefs: true
+                cleanupdefs: true,
+                inheritviewbox: true
             },
             index : {
                 files: {
