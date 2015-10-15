@@ -19,6 +19,7 @@ node_modules/
 *.min.css
 *.min.js
 www/css
+dist/
 config.json
 test/coverage/report.html
 ss--*.svg
