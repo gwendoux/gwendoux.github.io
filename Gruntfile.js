@@ -34,6 +34,13 @@ module.exports = function(grunt) {
         'clean:postprocess'
     ]);
 
+    grunt.registerTask('package', [
+        'clean:package',
+        'build',
+        'copy',
+        'appcache'
+    ]);
+
     grunt.registerTask('build', [
         'clean:build',
         'jshint:client',
@@ -266,6 +273,44 @@ module.exports = function(grunt) {
                 options: {
                     logConcurrentOutput: true
                 }
+            }
+        },
+
+        copy: {
+            dist: {
+                // expand is necessary to get access to advanced Grunt file
+                // options such as "cwd".
+                expand: true,
+                cwd: 'public',
+                src:[
+                    'css/*',
+                    'js/behavior.min.js',
+                    'img/*',
+                    'fonts/*',
+                    'favicon.ico'
+                ],
+                dest: 'dist/'
+            }
+        },
+
+        appcache: {
+            options: {
+                basePath: 'dist/'
+            },
+            all: {
+                dest: 'dist/manifest.appcache',
+                cache: {
+                    patterns: [
+                        'dist/favicon.ico',
+                        'dist/index.html',
+                        'dist/resume.html',
+                        'dist/css/*.css',
+                        'dist/js/*.js',
+                        'dist/img/**',
+                        'dist/fonts/*'
+                    ]
+                },
+                network: ['*']
             }
         }
     });

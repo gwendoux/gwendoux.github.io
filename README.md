@@ -20,3 +20,4 @@ gwendoux.com -- personal website
 | start-watch | grunt start-watch |  |  | run server with nodemon watch |
 | build       | grunt build |  |  | build front resources |
 | build-watch | grunt build-watch |  |   | build and watch front resources |
+| package | grunt copy:dist | build | grunt appcache | package app for deployment |

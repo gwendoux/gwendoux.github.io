@@ -21,6 +21,7 @@
     "cssnano": "^3.3.1",
     "csswring": "^4.0.0",
     "grunt": "^0.4.5",
+    "grunt-appcache": "^0.1.8",
     "grunt-browserify": "^4.0.1",
     "grunt-chmod": "1.1.0",
     "grunt-concurrent": "^2.0.3",
@@ -33,6 +34,7 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-mocha-test": "^0.12.7",
     "grunt-postcss": "^0.6.0",
+    "grunt-rsync": "^0.6.2",
     "grunt-svgmin": "^2.0.1",
     "grunt-svgstore": "^0.5.0",
     "grunt-uncss": "^0.4.3",
@@ -64,6 +66,9 @@
     "prestart-watch": "npm run lint",
     "start-watch": "nodemon",
     "build": "grunt build",
-    "build-watch": "grunt build-watch"
+    "build-watch": "grunt build-watch",
+    "prepackage": "rm -rf dist; npm run build",
+    "package": "grunt copy:dist",
+    "postpackage": "grunt appcache"
   }
 }
