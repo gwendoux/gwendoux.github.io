@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width,user-scalable=no">
-  <title>gwendoux.com</title>
-  <link rel="preload" href="/fonts/Megrim-subset.woff">
-  <link rel="preload" href="/fonts/Roboto-Light-subset.woff">
-  <link rel="preload" href="/fonts/Roboto-Thin-subset.woff">
-  <link rel="stylesheet" type="text/css" href="/css/main.min.css">
-  <script src="/js/script.min.js"></script>
-</head>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
   {% include "partials/_ss--index-icons.html" %}
   <header class="cover-wrapper">
     <div class="name fancy-font">
@@ -139,5 +130,4 @@
       <section class="footer-bottom">
         2015 &copy; Gwen Doux. <a href="https://github.com/gwendoux/gwendoux">see what' going on under</a>
       </section>
-  </body>
-</html>
+{% endblock %}
