@@ -19,6 +19,7 @@ module.exports = function(grunt) {
     grunt.registerTask('css', [
         'less',
         'postcss',
+        'uncss',
         'clean:postprocess'
     ]);
 
@@ -174,6 +175,31 @@ module.exports = function(grunt) {
             resume: {
                 src: '<%= config.src %>/css/resume.css',
                 dest: '<%= config.src %>/css/resume.min.css'
+            }
+        },
+
+        uncss: {
+            options: {
+                report: 'gzip',
+                htmlroot: 'public/', // css path link
+            },
+            index: {
+                options: {
+                    ignore:
+                    ['.photo-box',
+                     '.description',
+                     '.block-link',
+                     '.smaller',
+                     '.image-wrap']
+                },
+                files: {
+                    '<%= config.src %>/css/main.min.css': ['views/index.html']
+                }
+            },
+            resume: {
+                files: {
+                    '<%= config.src %>/css/resume.min.css': ['views/resume.html']
+                }
             }
         },
 
