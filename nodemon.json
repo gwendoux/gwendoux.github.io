@@ -1,7 +1,8 @@
 {
  "verbose": true,
  "cwd": "__dirname",
- "ignore": ["node_modules/**", "Gruntfile.js", "public/**", "test/**", ".DS_Store"],
+ "ignore": ["node_modules/**", "Gruntfile.js", "public/**", "test/**"],
  "ext": ["js", "json", "html"],
+ "watch": ["server.js", "views/**", "lib/**"],
  "delay": 1000
  }
