@@ -25,9 +25,10 @@
     "start-watch": "nodemon",
     "build": "grunt build",
     "build-watch": "grunt build-watch",
-    "prepackage": "rm -rf dist; npm run build",
-    "package": "grunt copy:dist",
-    "postpackage": "grunt appcache"
+    "clean:js": "rimraf public/js/*.min.*",
+    "clean:css": "rimraf public/css/**",
+    "clean:dist": "rimraf dist",
+    "clean": "parallelshell 'npm run clean:css' 'npm run clean:js'"
   },
   "devDependencies": {
     "autoprefixer": "^6.0.3",
@@ -54,6 +55,8 @@
     "mocha": "^2.3.3",
     "must": "^0.13.1",
     "nodemon": "^1.7.1",
+    "parallelshell": "^2.0.0",
+    "rimraf": "^2.4.4",
     "supertest": "^1.1.0",
     "supertest-as-promised": "^2.0.2",
     "time-grunt": "1.2.2"
