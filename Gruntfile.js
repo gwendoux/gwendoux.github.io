@@ -8,18 +8,10 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'build');
 
-    grunt.registerTask('lint', [
-        "jshint"
-    ]);
-
-    grunt.registerTask('test', [
-        "mochaTest"
-    ]);
 
     grunt.registerTask('css', [
         'less',
         'postcss',
-        //'uncss',
         'clean:postprocess'
     ]);
 
@@ -43,7 +35,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', [
         'clean:build',
-        'jshint:client',
         'js',
         'svg',
         'css'
@@ -61,68 +52,10 @@ module.exports = function(grunt) {
             src: 'public'
         },
 
-        jshint: {
-            options: {
-                unused: 'vars',
-                devel: true,
-                undef: true,
-                ignores: ['dist/**',
-                          'node_modules/**',
-                          '<%= config.src %>/js/vendors/**',
-                          '**/*.min.js'
-                         ]
-            },
-            server: {
-                options: {
-                    node: true,
-                    esnext: true
-                },
-                files: {
-                    src: ['**/*.json', '**/*.js',
-                          '!public/js/**/*.js',
-                          '!test/**/*.js'
-                         ]
-                }
-            },
-            client: {
-                options: {
-                    browser: true,
-                    globals: {
-                        require: false,
-                        exports: false
-                    }
-                },
-                files: {
-                    src: ['<%= config.src %>/js/lib/*.js']
-                }
-            }
-        },
-
-        mochaTest: {
-            test: {
-                options: {
-                    reporter: 'spec',
-                    ignoreLeaks: false,
-                    require: 'test/coverage/blanket_conf'
-                },
-                src: ['test/*.js']
-            },
-            coverage: {
-                options: {
-                    reporter: 'html-cov',
-                    // To suppress the mocha console output from the coverage
-                    // report.
-                    quiet: true,
-                    captureFile: 'test/coverage/report.html'
-                },
-                src: ['test/*.js']
-            }
-        },
-
         browserify: {
             dist: {
                 files: {
-                    '<%= config.src %>/js/script.js': ['<%= config.src %>/js/lib/behavior.js'],
+                    '<%= config.src %>/js/script.js': ['<%= config.src %>/js/lib/behavior.js']
                 }
             }
         },
@@ -147,7 +80,7 @@ module.exports = function(grunt) {
             },
             app: {
                 src: [
-                  '<%= config.src %>/js/script.js',
+                    '<%= config.src %>/js/script.js'
                 ],
                 dest: '<%= config.src %>/js/script.min.js'
             }
@@ -190,7 +123,7 @@ module.exports = function(grunt) {
         uncss: {
             options: {
                 report: 'gzip',
-                htmlroot: 'public/', // css path link
+                htmlroot: 'public/' // css path link
             },
             index: {
                 options: {
@@ -222,14 +155,14 @@ module.exports = function(grunt) {
             index : {
                 files: {
                     'public/svg/dist/ss--index-icons.svg':
-                    'public/svg/index/*.svg',
+                    'public/svg/index/*.svg'
                 }
             },
             resume : {
                 files: {
                     'public/svg/dist/ss--resume-icons.svg':
-                    'public/svg/resume/*.svg',
-                },
+                    'public/svg/resume/*.svg'
+                }
             }
         },
 
@@ -243,16 +176,6 @@ module.exports = function(grunt) {
             dist: ['dist']
         },
 
-        // used express server instead
-        /*connect: {
-            server: {
-                options: {
-                    base: '<%= config.src %>',
-                    port: 8014,
-                    keepalive: true
-                }
-            }
-        },*/
 
         watch: {
             less: {
@@ -260,7 +183,7 @@ module.exports = function(grunt) {
                 tasks: ['css']
             },
             'svg': {
-                files: ['<%= config.src %>/svg/**/*.svg', '!<%= config.src %>/svg/*.svg'],
+                files: ['<%= config.src %>/svg/**/*.svg', '!<%= config.src %>/svg/dist/*.svg'],
                 tasks: ['svg']
             },
             js: {
@@ -319,7 +242,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('svg2template', function() {
         grunt.file.recurse('public/svg/dist/', function(file) {
-            if(path.extname(file) === '.svg') {
+            if (path.extname(file) === '.svg') {
                 grunt.file.write('views/partials/_' + path.basename(file, '.svg') + '.html', '<span style="width:0;height:0;display:none;visibility:hidden;">' + grunt.file.read(file) + '</span>');
                 grunt.log.write(path.basename(file, '.svg') + ".html created");
             }
