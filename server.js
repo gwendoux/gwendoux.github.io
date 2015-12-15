@@ -18,5 +18,5 @@ app.set('port', process.env.PORT || 8014);
 require('./routes/router');
 
 app.listen(app.get('port'), function() {
-    logger.debug('Express server listening on port ' + app.get('port'));
+    logger.info('Express server listening on port ' + app.get('port'));
 });
