@@ -1,6 +1,6 @@
 require('must');
 var request = require('supertest-as-promised');
-var config = require('../lib/config');
+//var config = require('../lib/config');
 var app = require('../server');
 
 describe("Index", function() {

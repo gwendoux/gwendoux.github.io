@@ -19,28 +19,28 @@ ig.use({
 var jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.render('index.html');
 });
 
-app.get('/resume', function (req, res) {
+app.get('/resume', function(req, res) {
     res.render('resume.html');
 });
 
-app.use('/likes/', function (req, res) {
-    ig.user_self_liked(function(err, data){
-        if(err) {
-            console.log(err);
+app.use('/likes/', function(req, res) {
+    ig.user_self_liked(function(err, data) {
+        if (err) {
+            logger.debug(err);
             throw err;
         }
         res.render('likes.html', {data: data});
     });
 });
 
-app.use('/api/photos/:tag', jsonParser, function (req, res) {
+app.use('/api/photos/:tag', jsonParser, function(req, res) {
     ig.user_self_media_recent(function(err, result) {
-        if(err) {
-            console.log(err);
+        if (err) {
+            logger.debug(err);
             throw err;
         }
         var coffeeBeans = result.filter(function(photo) {
@@ -57,9 +57,9 @@ app.use('/api/photos/:tag', jsonParser, function (req, res) {
     });
 });
 
-app.use('/api/feed', jsonParser, function (req, res) {
-    parser(config.pinboard_feed,function(err, json) {
-        if(err) {
+app.use('/api/feed', jsonParser, function(req, res) {
+    parser(config.pinboard_feed, function(err, json) {
+        if (err) {
             logger.debug(err);
             throw err;
         }
@@ -77,10 +77,10 @@ app.use('/api/feed', jsonParser, function (req, res) {
     });
 });
 
-app.use('/api/likes/', jsonParser, function (req, res) {
-    ig.user_self_liked(function(err, data){
-        if(err) {
-            console.log(err);
+app.use('/api/likes/', jsonParser, function(req, res) {
+    ig.user_self_liked(function(err, data) {
+        if (err) {
+            logger.debug(err);
             throw err;
         }
         res.setHeader('Content-Type', 'text/plain');

@@ -1,4 +1,5 @@
 var express = require ('express');
+var logger = require('loglevel');
 var nunjucks  = require('nunjucks');
 var morgan = require('morgan');
 var path = require('path');
@@ -17,5 +18,5 @@ app.set('port', process.env.PORT || 8014);
 require('./routes/router');
 
 app.listen(app.get('port'), function() {
-  console.log('Express server listening on port ' + app.get('port'));
+    logger.debug('Express server listening on port ' + app.get('port'));
 });
