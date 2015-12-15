@@ -25,3 +25,5 @@ test/coverage/report.html
 ss--*.svg
 _ss-*.html
 *.map
+
+*.log
