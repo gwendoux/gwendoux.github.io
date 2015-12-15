@@ -98,6 +98,7 @@ header {
     @media (max-height: 920px) {
       bottom: 25%;
     }
+
     @media screen and (min-width: 1200px) {
       bottom: 50%;
     }
@@ -121,6 +122,9 @@ header {
     @media (max-height: 700px) {
       font-size: 2.75em;
     }
+    @media (max-height: 320px) {
+      font-size: 2em;
+    }
     span {
       display: block;
       @media screen and (min-width: @screen-md) {
@@ -137,6 +141,9 @@ header {
     margin: 0 auto;
     @media (max-height: 700px) {
       font-size: 2em;
+    }
+    @media (max-height: 320px) {
+      font-size: 1.5em;
     }
     @media screen and (min-width: 1200px) {
       width: 100%;
@@ -172,6 +179,7 @@ header {
       padding: .5em;
       @media (max-width: 400px) {
         float: none;
+        margin: 0 .15em;
       }
       [class*="icon-ss-"] {
         fill: white;
