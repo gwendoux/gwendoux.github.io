@@ -48,6 +48,12 @@ ul {
 }
 .container {
   max-width: 970px;
+  @media (min-width: 768px) {
+    width: auto;
+  }
+  @media (max-width: 520px) {
+    padding: 0;
+  }
 }
 header {
   //max-height: 600px;
@@ -424,3 +430,4 @@ footer {
 }
 
 @import 'partials/loader-animated.less';
+
