@@ -183,7 +183,7 @@ module.exports = function(grunt) {
                 tasks: ['css']
             },
             'svg': {
-                files: ['<%= config.src %>/svg/**/*.svg', '!<%= config.src %>/svg/*.svg'],
+                files: ['<%= config.src %>/svg/**/*.svg', '!<%= config.src %>/svg/dist/*.svg'],
                 tasks: ['svg']
             },
             js: {
