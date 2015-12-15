@@ -1,13 +1,15 @@
-var app = require('../server');
-var config = require('../lib/config');
+"use strict";
 
-var ig = require('instagram-node').instagram();
-var escape = require('escape-html');
-var moment = require('moment');
-var parser = require('parse-rss');
-var logger = require('loglevel');
-var url = require('url');
-var bodyParser = require('body-parser');
+const app = require('../server');
+const config = require('../lib/config');
+
+const ig = require('instagram-node').instagram();
+const escape = require('escape-html');
+const moment = require('moment');
+const parser = require('parse-rss');
+const logger = require('loglevel');
+const url = require('url');
+const bodyParser = require('body-parser');
 
 
 ig.use({
@@ -16,7 +18,7 @@ ig.use({
     client_secret: config.instagram_client_secret
 });
 
-var jsonParser = bodyParser.json();
+const jsonParser = bodyParser.json();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
@@ -43,7 +45,7 @@ app.use('/api/photos/:tag', jsonParser, function(req, res) {
             logger.debug(err);
             throw err;
         }
-        var coffeeBeans = result.filter(function(photo) {
+        let coffeeBeans = result.filter(function(photo) {
             return photo.tags.indexOf(req.params.tag) > -1;
         }).map(function(photo) {
             return {
@@ -63,7 +65,7 @@ app.use('/api/feed', jsonParser, function(req, res) {
             logger.debug(err);
             throw err;
         }
-        var dataFeed = json.slice(0, 3).map(function(json) {
+        let dataFeed = json.slice(0, 3).map(function(json) {
             return {
                 title: escape(json.title),
                 desc: escape(json.description),
