@@ -1,6 +1,6 @@
 "use strict";
 const express = require ('express');
-const config = require('../lib/config');
+const config = require('./lib/config');
 const nunjucks  = require('nunjucks');
 const morgan = require('morgan');
 const path = require('path');
@@ -10,7 +10,7 @@ const logger = config.getLogger();
 const app = module.exports = express();
 
 app.use(morgan('dev'));
-app.use('/', express.static('www'));
+app.use('/', express.static(__dirname + '/www'));
 nunjucks.configure(path.join(__dirname, 'views'), {
     autoescape: true,
     express: app

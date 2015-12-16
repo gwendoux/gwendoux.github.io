@@ -1,7 +1,7 @@
 require('must');
 var request = require('supertest-as-promised');
 //var config = require('../lib/config');
-var app = require('../server/app');
+var app = require('../server');
 
 describe("Index", function() {
     it("provides a favicon.ico", function() {
