@@ -1,7 +1,7 @@
 "use strict";
 
-const app = require('../server');
-const config = require('../lib/config');
+const app = require('../app');
+const config = require('../../lib/config');
 
 const ig = require('instagram-node').instagram();
 const escape = require('escape-html');

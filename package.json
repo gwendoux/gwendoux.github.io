@@ -2,7 +2,7 @@
   "name": "gwendoux",
   "version": "1.4.0",
   "description": "my personal website",
-  "main": "server.js",
+  "main": "server/app.js",
   "repository": "git@github.com:gwendoux/gwendoux.git",
   "keywords": [
     "personal",
