@@ -1,16 +1,15 @@
 {
-    "instagram": {
-        "User_ID": "CHANGE_ME",
-        "CLIENT_ID": "CHANGE_ME",
-        "CLIENT_SECRET": "CHANGE_ME",
-        "WEBSITE_URL": "CHANGE_ME",
-        "REDIRECT_URI": "CHANGE_ME",
-        "ACCESS_TOKEN": "CHANGE_ME"
-    },
-    "pinboard": {
-        "feed_url": "CHANGE_ME"
-    },
-    "server": {
-      "name": "CHANGE_ME"
-    }
+  "env": "development",
+  "log_level": "trace",
+  "ip": "0.0.0.0",
+  "port": 8014,
+  "instagram_User_ID": "CHANGE_ME",
+  "instagram_CLIENT_ID": "CHANGE_ME",
+  "instagram_CLIENT_SECRET": "CHANGE_ME",
+  "instagram_WEBSITE_URL": "CHANGE_ME",
+  "instagram_REDIRECT_URI": "CHANGE_ME",
+  "instagram_ACCESS_TOKEN": "CHANGE_ME",
+  "pinboard_feed_url": "CHANGE_ME",
+  "pinboard_API_KEY": "CHANGE_ME",
+  "pinboard_USERNAME": "CHANGE_ME"
 }
