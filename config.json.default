@@ -9,6 +9,5 @@
   "instagram_REDIRECT_URI": "CHANGE_ME",
   "instagram_ACCESS_TOKEN": "CHANGE_ME",
   "pinboard_feed_url": "CHANGE_ME",
-  "pinboard_API_KEY": "CHANGE_ME",
-  "pinboard_USERNAME": "CHANGE_ME"
+  "pinboard_API_TOKEN": "CHANGE_ME"
 }
