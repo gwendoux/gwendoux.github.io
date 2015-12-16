@@ -1,0 +1,63 @@
+{
+  "env": {
+    "doc": "Application environment",
+    "format": ["production", "development", "test"],
+    "default": "production",
+    "env": "NODE_ENV"
+  },
+  "log_level": {
+    "doc": "Log level",
+    "format": ["error", "warn", "info", "debug", "trace"],
+    "default": "info"
+  },
+  "port": {
+    "doc": "The port to bind",
+    "format": "port",
+    "default": 8005
+  },
+  "instagram_User_ID": {
+    "doc": "NEED MORE INFO",
+    "format": "*",
+    "default": null
+  },
+  "instagram_CLIENT_ID": {
+    "doc": "NEED MORE INFO",
+    "format": "*",
+    "default": null
+  },
+  "instagram_CLIENT_SECRET": {
+    "doc": "NEED MORE INFO",
+    "format": "*",
+    "default": null
+  },
+  "instagram_WEBSITE_URL": {
+    "doc": "NEED MORE INFO",
+    "format": "*",
+    "default": null
+  },
+  "instagram_REDIRECT_URI": {
+    "doc": "NEED MORE INFO",
+    "format": "*",
+    "default": null
+  },
+  "instagram_User_ID": {
+    "doc": "NEED MORE INFO",
+    "format": "*",
+    "default": null
+  },
+  "instagram_ACCESS_TOKEN": {
+    "doc": "NEED MORE INFO",
+    "format": "*",
+    "default": null
+  },
+  "pinboard_feed_url": {
+    "doc": "Pinboard xml feed url",
+    "format": "*",
+    "default": null
+  },
+  "pinboard_API_TOKEN": {
+    "doc": "Pinboard API Token",
+    "format": "*",
+    "default": null
+  }
+}
