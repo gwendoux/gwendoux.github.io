@@ -10,7 +10,7 @@ const logger = config.getLogger();
 const app = module.exports = express();
 
 app.use(morgan('dev'));
-app.use('/', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/www'));
 nunjucks.configure(path.join(__dirname, 'views'), {
     autoescape: true,
     express: app

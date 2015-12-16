@@ -24,8 +24,8 @@
     "start:watch": "nodemon",
     "build": "grunt build",
     "build:watch": "grunt build-watch",
-    "clean:js": "rimraf public/js/*.min.*",
-    "clean:css": "rimraf public/css/**",
+    "clean:js": "rimraf www/js/*.min.*",
+    "clean:css": "rimraf www/css/**",
     "clean:dist": "rimraf dist",
     "clean": "parallelshell 'npm run clean:css' 'npm run clean:js'"
   },
