@@ -15,6 +15,11 @@
     "format": "port",
     "default": 8005
   },
+  "server": {
+    "doc": "The server to deploy to",
+    "format": "*",
+    "default": 8005
+  },
   "instagram_User_ID": {
     "doc": "NEED MORE INFO",
     "format": "*",
