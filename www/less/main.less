@@ -206,31 +206,35 @@ header {
   }
 }
 .arrows {
-	width: 60px;
-	height: 72px;
-	position: absolute;
-	left: 50%;
-	margin-left: -30px;
-	bottom: 35px;
+  width: 60px;
+  height: 72px;
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  bottom: 35px;
 }
 
 .arrows path {
-	stroke: white;
-	fill: transparent;
-	stroke-width: 1px;
+  stroke: white;
+  fill: transparent;
+  stroke-width: 1px;
 }
 
 
 .cover-wrapper {
     position: relative;
-    background: #356D46 url('/img/kubist.jpg') center/cover;
+    background: #356D46 data-uri('image/jpeg;base64', '/img/kubist-tiny.jpg') center/cover;
     width: 100%;
     height: 100vh;
     min-height: 26em;
     max-height: 54em;
-    @media (min-width: 720px) and (-webkit-min-device-pixel-ratio: 2) {
-      background: #356D46 url('/img/kubist.svg') center/cover;
-    }
+    //@media (min-width: 720px) and (-webkit-min-device-pixel-ratio: 2) {
+    //  background: #356D46 url('/img/kubist.svg') center/cover;
+    //}
+}
+
+.cover-wrapper-enhanced {
+  background-image: url('/img/kubist.svg');
 }
 
 h4 {

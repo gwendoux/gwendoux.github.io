@@ -48,5 +48,7 @@ var $ = require('jquery');
         }).fail(function(error) {
             $('#pinboardfeed').html('<div class="alert">cannot get data from pinboard</div>');
         });
+
+        $('.cover-wrapper').addClass('cover-wrapper-enhanced');
     });
 }()); // Immediately-Invoked Function Expression (IIFE)
