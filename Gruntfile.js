@@ -196,7 +196,7 @@ module.exports = function(grunt) {
     grunt.registerTask('svg2template', function() {
         grunt.file.recurse('www/svg/dist/', function(file) {
             if (path.extname(file) === '.svg') {
-                grunt.file.write('views/partials/_' + path.basename(file, '.svg') + '.html', '<span style="width:0;height:0;display:none;visibility:hidden;">' + grunt.file.read(file) + '</span>');
+                grunt.file.write('server/views/partials/_' + path.basename(file, '.svg') + '.html', '<span style="width:0;height:0;display:none;visibility:hidden;">' + grunt.file.read(file) + '</span>');
                 grunt.log.write(path.basename(file, '.svg') + ".html created");
             }
         });
