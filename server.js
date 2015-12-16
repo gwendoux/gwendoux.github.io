@@ -1,6 +1,7 @@
  "use strict";
  const express = require ('express');
  const logger = require('loglevel');
+ const config = require('./lib/config');
  const nunjucks  = require('nunjucks');
  const morgan = require('morgan');
  const path = require('path');
@@ -14,7 +15,7 @@
      express: app
  });
 
- app.set('port', process.env.PORT || 8014);
+ app.set('port', process.env.PORT || config.port);
 
  require('./routes/router');
 
