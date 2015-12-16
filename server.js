@@ -1,23 +1,26 @@
- "use strict";
- const express = require ('express');
- const logger = require('loglevel');
- const nunjucks  = require('nunjucks');
- const morgan = require('morgan');
- const path = require('path');
+"use strict";
+const express = require ('express');
+const config = require('./lib/config');
+const nunjucks  = require('nunjucks');
+const morgan = require('morgan');
+const path = require('path');
 
- const app = module.exports = express();
+const logger = config.getLogger();
 
- app.use(morgan('dev'));
- app.use('/', express.static(__dirname + '/public'));
- nunjucks.configure(path.join(__dirname, 'views'), {
-     autoescape: true,
-     express: app
- });
+const app = module.exports = express();
 
- app.set('port', process.env.PORT || 8014);
+app.use(morgan('dev'));
+app.use('/', express.static(__dirname + '/public'));
+nunjucks.configure(path.join(__dirname, 'views'), {
+    autoescape: true,
+    express: app
+});
 
- require('./routes/router');
+app.set('env', config.get('env'));
+app.set('port', process.env.PORT || config.get('port'));
 
- app.listen(app.get('port'), function() {
-     logger.info('Express server listening on port ' + app.get('port'));
- });
+require('./routes/router');
+
+app.listen(app.get('port'), function() {
+    logger.info('Express server listening on port ' + app.get('port'));
+});

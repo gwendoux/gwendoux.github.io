@@ -7,18 +7,21 @@ const ig = require('instagram-node').instagram();
 const escape = require('escape-html');
 const moment = require('moment');
 const parser = require('parse-rss');
-const logger = require('loglevel');
 const url = require('url');
 const bodyParser = require('body-parser');
 
+const logger = config.getLogger();
 
 ig.use({
-    access_token: config.instagram_access_token,
-    client_id: config.instagram_client_id,
-    client_secret: config.instagram_client_secret
+    access_token: config.get('instagram_ACCESS_TOKEN'),
+    client_id: config.get('instagram_CLIENT_ID'),
+    client_secret: config.get('instagram_CLIENT_SECRET')
 });
 
+const Pinboard_data = config.get('pinboard_feed_url');
+
 const jsonParser = bodyParser.json();
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(req, res) {
@@ -60,7 +63,7 @@ app.use('/api/photos/:tag', jsonParser, function(req, res) {
 });
 
 app.use('/api/feed', jsonParser, function(req, res) {
-    parser(config.pinboard_feed, function(err, json) {
+    parser(Pinboard_data, function(err, json) {
         if (err) {
             logger.debug(err);
             throw err;
