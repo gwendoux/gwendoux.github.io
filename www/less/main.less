@@ -29,7 +29,6 @@
 }
 
 body {
-  font-family: @main-font;
   color: @grey;
   font-size: @font-size;
   font-weight: 300;
@@ -137,7 +136,6 @@ header {
   }
 
   h2 {
-    font-family: @light-font;
     font-size: 2.8em;
     font-weight: 100;
     width: 70%;
@@ -156,7 +154,7 @@ header {
 
 
   .fancy-font {
-    font-family: @fancy-font;
+    font-family: serif;
   }
 
   .social {
@@ -254,7 +252,7 @@ h4 {
   text-align: center;
 }
 .overview-header {
-  font-family: @fancy-font;
+  font-family: serif;
   font-size: 2.75em;
   text-align: center;
   padding: 1em 0;
@@ -426,4 +424,5 @@ footer {
   }
 }
 
+@import 'partials/font-loaded.less';
 @import 'partials/loader-animated.less';
