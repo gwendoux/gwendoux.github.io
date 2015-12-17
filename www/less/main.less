@@ -223,7 +223,8 @@ header {
 
 .cover-wrapper {
     position: relative;
-    background: #356D46 data-uri('image/jpeg;base64', '/img/kubist-tiny.jpg') center/cover;
+    // use relative url for data-uri images
+    background: #356D46 data-uri('image/jpeg;base64', '../img/kubist-tiny.jpg') center/cover;
     width: 100%;
     height: 100vh;
     min-height: 26em;
