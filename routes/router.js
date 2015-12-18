@@ -1,8 +1,7 @@
-"use strict";
+'use strict';
 
 const app = require('../server');
 const config = require('../lib/config');
-
 const ig = require('instagram-node').instagram();
 const escape = require('escape-html');
 const moment = require('moment');
@@ -18,7 +17,6 @@ ig.use({
     client_secret: config.get('instagram_CLIENT_SECRET')
 });
 
-const Pinboard_data = config.get('pinboard_feed_url');
 
 const jsonParser = bodyParser.json();
 
@@ -62,25 +60,9 @@ app.use('/api/photos/:tag', jsonParser, function(req, res) {
     });
 });
 
-app.use('/api/feed', jsonParser, function(req, res) {
-    parser(Pinboard_data, function(err, json) {
-        if (err) {
-            logger.debug(err);
-            throw err;
-        }
-        let dataFeed = json.slice(0, 3).map(function(json) {
-            return {
-                title: escape(json.title),
-                desc: escape(json.description),
-                url: json.link,
-                date: moment(json.date).fromNow(),
-                source: url.parse(json.link,true).host
-            };
-        });
-        res.setHeader('Content-Type', 'text/plain');
-        res.end(JSON.stringify(dataFeed, null, 2));
-    });
-});
+const pinboard = require('./pinboard');
+app.route('/api/feed')
+    .get(pinboard.feed);
 
 app.use('/api/likes/', jsonParser, function(req, res) {
     ig.user_self_liked(function(err, data) {
