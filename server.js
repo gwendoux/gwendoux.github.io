@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 const express = require ('express');
 const config = require('./lib/config');
 const nunjucks  = require('nunjucks');
