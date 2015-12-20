@@ -30,7 +30,7 @@
     "clean": "parallelshell 'npm run clean:css' 'npm run clean:js'"
   },
   "devDependencies": {
-    "autoprefixer": "6.1.2",
+    "autoprefixer": "6.2.0",
     "blanket": "1.2.1",
     "commander": "2.9.0",
     "convict": "1.0.2",
@@ -64,7 +64,7 @@
     "tracer": "0.8.2"
   },
   "dependencies": {
-    "body-parser": "1.14.1",
+    "body-parser": "1.14.2",
     "escape-html": "1.0.3",
     "express": "4.13.3",
     "instagram-node": "0.5.8",
