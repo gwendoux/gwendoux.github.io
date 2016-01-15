@@ -36,7 +36,8 @@ module.exports = function(grunt) {
         'clean:build',
         'js',
         'svg',
-        'css'
+        'css',
+        'renderNunjucks'
     ]);
 
     grunt.registerTask('build-watch', [
@@ -119,6 +120,20 @@ module.exports = function(grunt) {
             }
         },
 
+        renderNunjucks: {
+            html: {
+                options: {
+                    baseDir: 'views/'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'views/',
+                    src: ['*.html'],
+                    dest: 'www'
+                }]
+            }
+        },
+
         svgstore: {
             options: {
                 prefix: 'icon-',
@@ -128,14 +143,14 @@ module.exports = function(grunt) {
             },
             index : {
                 files: {
-                    'www/svg/dist/ss--index-icons.svg':
-                    'www/svg/index/*.svg'
+                    '<%= config.src %>/svg/dist/ss--index-icons.svg':
+                    '<%= config.src %>/svg/index/*.svg'
                 }
             },
             resume : {
                 files: {
-                    'www/svg/dist/ss--resume-icons.svg':
-                    'www/svg/resume/*.svg'
+                    '<%= config.src %>/svg/dist/ss--resume-icons.svg':
+                    '<%= config.src %>/svg/resume/*.svg'
                 }
             }
         },
