@@ -62,6 +62,8 @@ var $ = require('jquery');
             }
         });
 
+        // find a better way to add this class
+        // wait until full image is downloaded and available
         $('.cover-wrapper').addClass('cover-wrapper-enhanced');
     });
 }()); // Immediately-Invoked Function Expression (IIFE)
