@@ -5,6 +5,13 @@ var $ = require('jquery');
 
     $(document).ready(function() {
 
+        $.get("svg/dist/ss--index-icons.svg", function(data) {
+            var div = document.createElement("div");
+            div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
+            document.body.insertBefore(div, document.body.childNodes[0]);
+            
+        });
+
         var coffeeRq = 'http://api.gwendoux.com/v1/photos/coffeeoftheday';
 
         $.ajax({
