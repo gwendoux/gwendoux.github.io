@@ -24,7 +24,11 @@
     "clean:js": "rimraf www/js/*.min.*",
     "clean:css": "rimraf www/css/**",
     "clean:dist": "rimraf dist",
-    "clean": "parallelshell 'npm run clean:css' 'npm run clean:js'"
+    "clean": "parallelshell 'npm run clean:css' 'npm run clean:js'",
+    "prepackage": "rimraf dist && npm run build",
+    "package": "ncp www/ dist",
+    "postpackage": "rimraf dist/less dist/svg/index dist/svg/resume dist/svg/stock dist/js/lib .DS_Store",
+    "push:prod": "rsync -avzP --delete-before dist/ gwendoux:/usr/share/nginx/www"
   },
   "devDependencies": {
     "autoprefixer": "6.2.0",
