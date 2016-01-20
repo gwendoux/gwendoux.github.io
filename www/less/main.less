@@ -21,7 +21,7 @@
 * Override Bootstrap variables
 */
 
-@import './public/less/vendors/bootstrap-3.2.0/bootstrap.less';
+@import '/vendors/bootstrap-3.2.0/bootstrap.less';
 
 * {
   position: relative;
@@ -29,10 +29,14 @@
 }
 
 body {
-  font-family: @main-font;
   color: @grey;
   font-size: @font-size;
   font-weight: 300;
+  &  > div:first-of-type {
+    display: none;
+    visibility: hidden;
+    height: 0;
+  }
 }
 
 p, li {
@@ -137,7 +141,6 @@ header {
   }
 
   h2 {
-    font-family: @light-font;
     font-size: 2.8em;
     font-weight: 100;
     width: 70%;
@@ -156,7 +159,7 @@ header {
 
 
   .fancy-font {
-    font-family: @fancy-font;
+    font-family: serif;
   }
 
   .social {
@@ -208,31 +211,36 @@ header {
   }
 }
 .arrows {
-	width: 60px;
-	height: 72px;
-	position: absolute;
-	left: 50%;
-	margin-left: -30px;
-	bottom: 35px;
+  width: 60px;
+  height: 72px;
+  position: absolute;
+  left: 50%;
+  margin-left: -30px;
+  bottom: 35px;
 }
 
 .arrows path {
-	stroke: white;
-	fill: transparent;
-	stroke-width: 1px;
+  stroke: white;
+  fill: transparent;
+  stroke-width: 1px;
 }
 
 
 .cover-wrapper {
     position: relative;
-    background: #356D46 url('/img/kubist.jpg') center/cover;
+    // use relative url for data-uri images
+    background: #356D46 data-uri('image/jpeg;base64', '../img/kubist-tiny.jpg') center/cover;
     width: 100%;
     height: 100vh;
     min-height: 26em;
     max-height: 54em;
-    @media (min-width: 720px) and (-webkit-min-device-pixel-ratio: 2) {
-      background: #356D46 url('/img/kubist.svg') center/cover;
-    }
+    //@media (min-width: 720px) and (-webkit-min-device-pixel-ratio: 2) {
+    //  background: #356D46 url('/img/kubist.svg') center/cover;
+    //}
+}
+
+.cover-wrapper-enhanced {
+  background-image: url('/img/kubist.svg');
 }
 
 h4 {
@@ -254,7 +262,7 @@ h4 {
   text-align: center;
 }
 .overview-header {
-  font-family: @fancy-font;
+  font-family: serif;
   font-size: 2.75em;
   text-align: center;
   padding: 1em 0;
@@ -426,4 +434,5 @@ footer {
   }
 }
 
+@import 'partials/font-loaded.less';
 @import 'partials/loader-animated.less';

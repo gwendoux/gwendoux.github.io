@@ -29,15 +29,15 @@ module.exports = function(grunt) {
     grunt.registerTask('package', [
         'clean:package',
         'build',
-        'copy',
-        'appcache'
+        'copy'
     ]);
 
     grunt.registerTask('build', [
         'clean:build',
         'js',
         'svg',
-        'css'
+        'css',
+        'renderNunjucks'
     ]);
 
     grunt.registerTask('build-watch', [
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         config: {
-            src: 'public'
+            src: 'www'
         },
 
         browserify: {
@@ -120,28 +120,17 @@ module.exports = function(grunt) {
             }
         },
 
-        uncss: {
-            options: {
-                report: 'gzip',
-                htmlroot: 'public/' // css path link
-            },
-            index: {
+        renderNunjucks: {
+            html: {
                 options: {
-                    ignore:
-                    ['.photo-box',
-                     '.description',
-                     '.block-link',
-                     '.smaller',
-                     '.image-wrap']
+                    baseDir: 'views/'
                 },
-                files: {
-                    '<%= config.src %>/css/main.min.css': ['views/index.html']
-                }
-            },
-            resume: {
-                files: {
-                    '<%= config.src %>/css/resume.min.css': ['views/resume.html']
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'views/',
+                    src: ['*.html'],
+                    dest: 'www'
+                }]
             }
         },
 
@@ -154,14 +143,14 @@ module.exports = function(grunt) {
             },
             index : {
                 files: {
-                    'public/svg/dist/ss--index-icons.svg':
-                    'public/svg/index/*.svg'
+                    '<%= config.src %>/svg/dist/ss--index-icons.svg':
+                    '<%= config.src %>/svg/index/*.svg'
                 }
             },
             resume : {
                 files: {
-                    'public/svg/dist/ss--resume-icons.svg':
-                    'public/svg/resume/*.svg'
+                    '<%= config.src %>/svg/dist/ss--resume-icons.svg':
+                    '<%= config.src %>/svg/resume/*.svg'
                 }
             }
         },
@@ -206,7 +195,7 @@ module.exports = function(grunt) {
                 // expand is necessary to get access to advanced Grunt file
                 // options such as "cwd".
                 expand: true,
-                cwd: 'public',
+                cwd: 'www',
                 src:[
                     'css/*',
                     'js/behavior.min.js',
@@ -216,32 +205,11 @@ module.exports = function(grunt) {
                 ],
                 dest: 'dist/'
             }
-        },
-
-        appcache: {
-            options: {
-                basePath: 'dist/'
-            },
-            all: {
-                dest: 'dist/manifest.appcache',
-                cache: {
-                    patterns: [
-                        'dist/favicon.ico',
-                        'dist/index.html',
-                        'dist/resume.html',
-                        'dist/css/*.css',
-                        'dist/js/*.js',
-                        'dist/img/**',
-                        'dist/fonts/*'
-                    ]
-                },
-                network: ['*']
-            }
         }
     });
 
     grunt.registerTask('svg2template', function() {
-        grunt.file.recurse('public/svg/dist/', function(file) {
+        grunt.file.recurse('www/svg/dist/', function(file) {
             if (path.extname(file) === '.svg') {
                 grunt.file.write('views/partials/_' + path.basename(file, '.svg') + '.html', '<span style="width:0;height:0;display:none;visibility:hidden;">' + grunt.file.read(file) + '</span>');
                 grunt.log.write(path.basename(file, '.svg') + ".html created");
