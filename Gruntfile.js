@@ -8,13 +8,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', 'build');
 
-
-    grunt.registerTask('css', [
-        'less',
-        'postcss',
-        'clean:postprocess'
-    ]);
-
     grunt.registerTask('svg', [
         'svgstore',
         'svg2template'
@@ -36,7 +29,6 @@ module.exports = function(grunt) {
         'clean:build',
         'js',
         'svg',
-        'css',
         'renderNunjucks'
     ]);
 
@@ -86,40 +78,6 @@ module.exports = function(grunt) {
             }
         },
 
-        less: {
-            concat: {
-                src: ['<%= config.src %>/less/main.less'],
-                dest: '<%= config.src %>/css/main.css'
-            },
-            resume: {
-                src: ['<%= config.src %>/less/resume.less'],
-                dest: '<%= config.src %>/css/resume.css'
-            }
-        },
-
-        postcss: {
-            options: {
-                map: true,
-                report: 'gzip',
-                processors: [
-                    require('autoprefixer')({
-                        browsers: ['last 2 version', 'ie 9']
-                    }),
-                    require('csswring')({
-                        removeAllComments: true
-                    })
-                ]
-            },
-            index: {
-                src: '<%= config.src %>/css/main.css',
-                dest: '<%= config.src %>/css/main.min.css'
-            },
-            resume: {
-                src: '<%= config.src %>/css/resume.css',
-                dest: '<%= config.src %>/css/resume.min.css'
-            }
-        },
-
         renderNunjucks: {
             html: {
                 options: {
@@ -157,20 +115,15 @@ module.exports = function(grunt) {
 
         clean: {
             build: {
-                src: ['<%= config.src %>/css/*.min.css', '<%= config.src %>/js/*.min.js', '<%= config.src %>/js/*.map.js']
+                src: ['<%= config.src %>/js/*.min.js', '<%= config.src %>/js/*.map.js']
             },
             postprocess: {
-                src: ['<%= config.src %>/css/main.css', '<%= config.src %>/css/resume.css', '<%= config.src %>/js/script.js']
-            },
-            dist: ['dist']
+                src: ['<%= config.src %>/js/script.js']
+            }
         },
 
 
         watch: {
-            less: {
-                files: ['<%= config.src %>/less/**/*.less'],
-                tasks: ['css']
-            },
             'svg': {
                 files: ['<%= config.src %>/svg/**/*.svg', '!<%= config.src %>/svg/dist/*.svg'],
                 tasks: ['svg']
@@ -187,23 +140,6 @@ module.exports = function(grunt) {
                 options: {
                     logConcurrentOutput: true
                 }
-            }
-        },
-
-        copy: {
-            dist: {
-                // expand is necessary to get access to advanced Grunt file
-                // options such as "cwd".
-                expand: true,
-                cwd: 'www',
-                src:[
-                    'css/*',
-                    'js/behavior.min.js',
-                    'img/*',
-                    'fonts/*',
-                    'favicon.ico'
-                ],
-                dest: 'dist/'
             }
         }
     });
