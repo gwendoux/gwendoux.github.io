@@ -13,21 +13,8 @@ module.exports = function(grunt) {
         'svg2template'
     ]);
 
-    grunt.registerTask('js', [
-        'browserify',
-        'uglify',
-        'clean:postprocess'
-    ]);
-
-    grunt.registerTask('package', [
-        'clean:package',
-        'build',
-        'copy'
-    ]);
 
     grunt.registerTask('build', [
-        'clean:build',
-        'js',
         'svg',
         'renderNunjucks'
     ]);
@@ -42,40 +29,6 @@ module.exports = function(grunt) {
 
         config: {
             src: 'www'
-        },
-
-        browserify: {
-            dist: {
-                files: {
-                    '<%= config.src %>/js/script.js': ['<%= config.src %>/js/lib/behavior.js']
-                }
-            }
-        },
-
-        uglify : {
-            options: {
-                compress: {
-                    sequences: true,
-                    dead_code: true,
-                    conditionals: true,
-                    booleans: true,
-                    unused: true,
-                    if_return: true,
-                    join_vars: true,
-                    drop_console: true
-                },
-                //mangle: true,
-                report: 'gzip',
-                sourceMap: true,
-                screwIE8: true,
-                preserveComments: false
-            },
-            app: {
-                src: [
-                    '<%= config.src %>/js/script.js'
-                ],
-                dest: '<%= config.src %>/js/script.min.js'
-            }
         },
 
         renderNunjucks: {
@@ -113,33 +66,10 @@ module.exports = function(grunt) {
             }
         },
 
-        clean: {
-            build: {
-                src: ['<%= config.src %>/js/*.min.js', '<%= config.src %>/js/*.map.js']
-            },
-            postprocess: {
-                src: ['<%= config.src %>/js/script.js']
-            }
-        },
-
-
         watch: {
             'svg': {
                 files: ['<%= config.src %>/svg/**/*.svg', '!<%= config.src %>/svg/dist/*.svg'],
                 tasks: ['svg']
-            },
-            js: {
-                files: ['Gruntfile.js', '<%= config.src %>/js/lib/*.js', '!*.min.js'],
-                tasks: ['js']
-            }
-        },
-
-        concurrent: {
-            target: {
-                tasks: ['server', 'watch'],
-                options: {
-                    logConcurrentOutput: true
-                }
             }
         }
     });
