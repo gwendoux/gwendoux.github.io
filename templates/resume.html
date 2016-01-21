@@ -8,9 +8,20 @@
 	<title>Gwenaël Doux</title>
 	<link rel="preload" href="/fonts/Roboto-Light-subset.woff">
 	<link rel="stylesheet" href="/css/resume.min.css">
+
+	<script type="text/javascript">
+	var ajax = new XMLHttpRequest();
+		ajax.open("GET", "svg/ss--resume-icons.svg", true);
+		ajax.send();
+		ajax.onload = function(e) {
+			var div = document.createElement("div");
+			div.innerHTML = ajax.responseText;
+			document.body.insertBefore(div, document.body.childNodes[0]);
+		}
+	</script>
 	</head>
 	<body>
-  {% include "./partials/_ss--resume-icons.html" %}
+
 	<header id="header">
 		<div class="container">
 			<div class="row">
