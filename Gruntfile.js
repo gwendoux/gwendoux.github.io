@@ -18,6 +18,7 @@ module.exports = function(grunt) {
         renderNunjucks: {
             html: {
                 options: {
+                    noCache: true,
                     baseDir: 'templates/'
                 },
                 files: [{
