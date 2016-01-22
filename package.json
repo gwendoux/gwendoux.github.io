@@ -25,7 +25,7 @@
     "build:css:watch": "watch 'npm run build:css' www/less/",
     "prebuild:js": "npm run clean:js",
     "prebuild:js:watch": "npm run clean:js",
-    "build:js": "browserify www/js/lib/behavior.js | uglifyjs -v --compress --screw-ie8 - > www/js/script.min.js",
+    "build:js": "browserify www/js/lib/behavior.js | uglifyjs - -v --compress --screw-ie8 > www/js/script.min.js",
     "build:js:watch": "watchify www/js/lib/behavior.js -o www/js/script.min.js -v",
     "prebuild:template": "npm run clean:template",
     "build:template": "grunt renderNunjucks",
