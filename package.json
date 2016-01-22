@@ -19,7 +19,7 @@
     "start": "browser-sync start --config bs-config.js",
     "start:watch": "parallelshell 'npm run build:watch' 'npm start'",
     "build:css:index": "mkdirp www/css && lessc www/less/main.less | postcss -u autoprefixer -u pixrem -c postcss.json | cleancss > www/css/main.min.css",
-    "postbuild:css:index": "purifycss www/css/main.min.css www/index.html www/js/lib/behavior.js --out www/css/main.min.css --info",
+    "postbuild:css:index": "purifycss www/css/main.min.css www/index.html www/js/lib/behavior.js node_modules/fluidbox/src/js/jquery.fluidbox.js --out www/css/main.min.css --info",
     "build:css:resume": "mkdirp www/css && lessc www/less/resume.less | postcss -u autoprefixer -u pixrem -c postcss.json | cleancss > www/css/resume.min.css",
     "postbuild:css:resume": "purifycss www/css/resume.min.css www/resume.html --out www/css/resume.min.css --info",
     "prebuild:css": "npm run clean:css",
