@@ -22,22 +22,19 @@
     "build:resume:css": "mkdirp www/css && lessc www/less/resume.less | postcss -u autoprefixer -u pixrem -c postcss.json | cleancss > www/css/resume.min.css | purifycss www/css/resume.min.css www/resume.html --info",
     "prebuild:css": "npm run clean:css",
     "build:css": "parallelshell 'npm run build:index:css' 'npm run build:resume:css'",
-    "prebuild:css:watch": "npm run clean:css",
-    "build:css:watch": "watch 'npm run build:css' resource/less/",
+    "build:css:watch": "watch 'npm run build:css' www/less/",
     "prebuild:js": "npm run clean:js",
     "prebuild:js:watch": "npm run clean:js",
-    "build:js": "browserify www/js/lib/behavior.js | uglifyjs -v --compress --screw-ie8 --stats - > www/js/script.min.js",
+    "build:js": "browserify www/js/lib/behavior.js | uglifyjs -v --compress --screw-ie8 - > www/js/script.min.js",
     "build:js:watch": "watchify www/js/lib/behavior.js -o www/js/script.min.js -v",
     "prebuild:template": "npm run clean:template",
     "build:template": "grunt renderNunjucks",
-    "prebuild:template:watch": "npm run clean:template",
     "build:template:watch": "watch 'npm run build:template' templates/",
     "prebuild:svg": "npm run clean:svg",
     "build:svg": "grunt svgstore",
-    "prebuild:svg:watch": "npm run clean:svg",
-    "build:svg:watch": "watch 'npm run build:svg' resource/svg/",
+    "build:svg:watch": "watch 'npm run build:svg' svg/",
     "build": "npm run build:template && npm run build:css && npm run build:js && npm run build:svg",
-    "build:watch": "parallelshell 'npm run build:css ''npm run build:js' 'grunt build-watch'",
+    "build:watch": "parallelshell 'npm run build:template:watch' 'npm run build:css:watch' 'npm run build:js:watch' 'npm run build:svg:watch'",
     "clean:svg": "rimraf www/svg/*",
     "clean:template": "rimraf www/*.html",
     "clean:js": "rimraf www/js/*.min.*",
@@ -54,6 +51,7 @@
     "autoprefixer": "6.3.1",
     "browser-sync": "2.11.1",
     "browserify": "13.0.0",
+    "browserify-shim": "^3.8.12",
     "clean-css": "3.4.9",
     "convict": "1.0.2",
     "eslint": "1.10.3",
@@ -74,9 +72,19 @@
     "watch": "0.17.1",
     "watchify": "3.7.0"
   },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browser": {
+    "fluidbox": "./node_modules/fluidbox/src/js/jquery.fluidbox.js"
+  },
+  "browserify-shim": {
+    "jquery": "global:$",
+    "fluidbox": "fluidbox"
+  },
   "dependencies": {
-    "jquery": "2.2.0",
-    "loglevel": "1.4.0",
-    "moment": "2.11.1"
+    "loglevel": "1.4.0"
   }
 }
