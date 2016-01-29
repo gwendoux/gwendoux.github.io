@@ -1,6 +1,6 @@
 {
   "name": "gwendoux",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "dependencies": {
     "jquery": {
       "version": "2.2.0",
