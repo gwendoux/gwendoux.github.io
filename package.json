@@ -1,6 +1,6 @@
 {
   "name": "gwendoux",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "my personal website",
   "main": "www/index.html",
   "repository": "git@github.com:gwendoux/gwendoux.git",
