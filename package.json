@@ -46,7 +46,7 @@
     "prepackage": "rimraf dist && npm run build",
     "package": "ncp www/ dist",
     "postpackage": "rimraf dist/less dist/svg/index dist/svg/resume dist/svg/stock dist/js/lib .DS_Store",
-    "push:prod": "rsync -avzP --delete-before dist/ gwendoux:/usr/share/nginx/www",
+    "push:prod": "rsync -avzP --update --delete-before dist/ gwendoux:/usr/share/nginx/www",
     "safefreeze": "rimraf node_modules npm-shrinkwrap.json && npm install && npm prune && npm dedupe && npm lint && npm shrinkwrap"
   },
   "devDependencies": {
