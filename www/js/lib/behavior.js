@@ -2,7 +2,6 @@
 
 var $ = require('jquery');
 var moment = require('moment');
-require('fluidbox');
 
 $(document).ready(function() {
 
@@ -23,16 +22,14 @@ $(document).ready(function() {
         success: function(res) {
             var html = [];
             $.each(res.slice(0, 6), function(key, val) {
-                html.push('<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">');
+                html.push('<div class="col-xs-12 col-sm-6 col-md-4">');
                 html.push('<div class="photo-box">');
                 html.push('<div class="image-wrap">');
-                html.push('<a data-fluidbox href="' + val.image.standard + '">');
                 html.push('<img src="' + val.image.standard + '">');
-                html.push('</a>');
                 html.push('</div>');
                 html.push('<div class="description">');
                 html.push(val.image.caption);
-                html.push('<div class="date">' + moment(val.image.date).fromNow() + '</div>');
+                html.push('<div class="date">' + moment(val.image.date, 'X').fromNow() + '</div>');
                 html.push('</div>');
                 html.push('</div>');
                 html.push('</div>');
