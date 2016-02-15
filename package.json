@@ -1,6 +1,6 @@
 {
   "name": "gwendoux",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "my personal website",
   "main": "www/index.html",
   "repository": "git@github.com:gwendoux/gwendoux.git",
@@ -75,14 +75,14 @@
     "watchify": "3.7.0"
   },
   "browserify": {
-   "transform": [
-     "browserify-shim"
-   ]
- },
- "browserify-shim": {
-   "jquery": "global:$"
-},
-"dependencies": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "browserify-shim": {
+    "jquery": "global:$"
+  },
+  "dependencies": {
     "loglevel": "1.4.0",
     "moment": "2.11.1"
   }
