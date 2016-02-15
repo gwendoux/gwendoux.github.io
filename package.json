@@ -74,20 +74,9 @@
     "watch": "0.17.1",
     "watchify": "3.7.0"
   },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "browser": {
-    "fluidbox": "./node_modules/fluidbox/src/js/jquery.fluidbox.js"
-  },
-  "browserify-shim": {
-    "jquery": "global:$",
-    "fluidbox": "fluidbox"
-  },
   "dependencies": {
+    "jquery": "2.2.0",
     "loglevel": "1.4.0",
-    "moment": "https://registry.npmjs.org/moment/-/moment-2.11.1.tgz"
+    "moment": "2.11.1"
   }
 }
