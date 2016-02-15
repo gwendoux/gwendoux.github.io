@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     });
 
-    var coffeeRq = 'http://localhost:8015/v1/photos/tag/coffeeoftheday';
+    var coffeeRq = 'https://api.gwendoux.com/v1/photos/tag/coffeeoftheday';
 
     $.ajax({
         url: coffeeRq,
@@ -41,7 +41,7 @@ $(document).ready(function() {
         }
     });
 
-    var feedRq = 'http://localhost:8015/v1/links/feed';
+    var feedRq = 'https://api.gwendoux.com/v1/links/feed';
 
     $.ajax({
         url: feedRq,
