@@ -74,8 +74,15 @@
     "watch": "0.17.1",
     "watchify": "3.7.0"
   },
-  "dependencies": {
-    "jquery": "2.2.0",
+  "browserify": {
+   "transform": [
+     "browserify-shim"
+   ]
+ },
+ "browserify-shim": {
+   "jquery": "global:$"
+},
+"dependencies": {
     "loglevel": "1.4.0",
     "moment": "2.11.1"
   }
