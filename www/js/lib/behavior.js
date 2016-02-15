@@ -1,5 +1,7 @@
 'use strict';
+
 var $ = require('jquery');
+var moment = require('moment');
 require('fluidbox');
 
 $(document).ready(function() {
@@ -11,7 +13,7 @@ $(document).ready(function() {
 
     });
 
-    var coffeeRq = 'https://api.gwendoux.com/v1/photos/coffeeoftheday';
+    var coffeeRq = 'http://localhost:8015/v1/photos/tag/coffeeoftheday';
 
     $.ajax({
         url: coffeeRq,
@@ -24,24 +26,25 @@ $(document).ready(function() {
                 html.push('<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">');
                 html.push('<div class="photo-box">');
                 html.push('<div class="image-wrap">');
-                html.push('<a data-fluidbox href="' + val.image_standard + '">');
-                html.push('<img src="' + val.image_standard + '">');
-                html.push('</a></div>');
+                html.push('<a data-fluidbox href="' + val.image.standard + '">');
+                html.push('<img src="' + val.image.standard + '">');
+                html.push('</a>');
+                html.push('</div>');
                 html.push('<div class="description">');
-                html.push(val.caption);
-                html.push('<div class="date">' + val.date + '</div>');
+                html.push(val.image.caption);
+                html.push('<div class="date">' + moment(val.image.date).fromNow() + '</div>');
                 html.push('</div>');
                 html.push('</div>');
                 html.push('</div>');
             });
-            $('#instafeed').html(html.join('')).find('a[data-fluidbox]').fluidbox();
+            $('#instafeed').html(html.join(''));
         },
         error: function(err) {
             $('#instafeed').html('<div class="alert">cannot get data from instagram</div>');
         }
     });
 
-    var feedRq = 'https://api.gwendoux.com/v1/links/feed';
+    var feedRq = 'http://localhost:8015/v1/links/feed';
 
     $.ajax({
         url: feedRq,
@@ -56,7 +59,7 @@ $(document).ready(function() {
                 html.push('<a class="block-link" href="' + val.url + '">');
                 html.push('<h4>' + val.title + '</h4>');
                 html.push('<p><em>' + val.desc + '</em></p>');
-                html.push('<p class="smaller"><em>saved ' + val.date + '</em></p>');
+                html.push('<p class="smaller"><em>saved ' + moment(val.date).fromNow() + '</em></p>');
                 html.push('<p class="smaller">source: ' + val.source + '</p>');
                 html.push('</a>');
                 html.push('</div>');

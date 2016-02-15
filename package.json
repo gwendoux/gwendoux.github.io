@@ -47,29 +47,29 @@
     "package": "ncp www/ dist",
     "postpackage": "rimraf dist/less dist/svg/index dist/svg/resume dist/svg/stock dist/js/lib .DS_Store",
     "push:prod": "rsync -avzP --update --delete-before dist/ gwendoux:/usr/share/nginx/www",
-    "safefreeze": "rimraf node_modules npm-shrinkwrap.json && npm install && npm prune && npm dedupe && npm lint && npm shrinkwrap"
+    "safefreeze": "rimraf node_modules npm-shrinkwrap.json && npm install && npm prune && npm dedupe && npm run lint && npm shrinkwrap"
   },
   "devDependencies": {
-    "autoprefixer": "6.3.1",
+    "autoprefixer": "6.3.3",
     "browser-sync": "2.11.1",
     "browserify": "13.0.0",
     "browserify-shim": "^3.8.12",
     "clean-css": "3.4.9",
-    "convict": "1.0.2",
-    "eslint": "1.10.3",
+    "convict": "1.1.2",
+    "eslint": "2.0.0",
     "grunt": "0.4.5",
     "grunt-available-tasks": "^0.6.1",
     "grunt-render-nunjucks": "0.1.3",
     "grunt-svgstore": "0.5.0",
-    "less": "2.5.3",
+    "less": "2.6.0",
     "load-grunt-tasks": "3.4.0",
     "mkdirp": "0.5.1",
     "ncp": "2.0.0",
     "parallelshell": "2.0.0",
     "pixrem": "3.0.0",
-    "postcss-cli": "2.4.0",
-    "purify-css": "1.0.17",
-    "rimraf": "2.5.0",
+    "postcss-cli": "2.5.1",
+    "purify-css": "1.1.6",
+    "rimraf": "2.5.2",
     "uglify-js": "2.6.1",
     "watch": "0.17.1",
     "watchify": "3.7.0"
@@ -87,6 +87,7 @@
     "fluidbox": "fluidbox"
   },
   "dependencies": {
-    "loglevel": "1.4.0"
+    "loglevel": "1.4.0",
+    "moment": "https://registry.npmjs.org/moment/-/moment-2.11.1.tgz"
   }
 }
