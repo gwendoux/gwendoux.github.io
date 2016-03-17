@@ -1,0 +1,16 @@
+{
+  "name": "gwendoux",
+  "version": "2.1.5",
+  "dependencies": {
+    "loglevel": {
+      "version": "1.4.0",
+      "from": "loglevel@1.4.0",
+      "resolved": "https://registry.npmjs.org/loglevel/-/loglevel-1.4.0.tgz"
+    },
+    "moment": {
+      "version": "2.11.1",
+      "from": "moment@2.11.1",
+      "resolved": "https://registry.npmjs.org/moment/-/moment-2.11.1.tgz"
+    }
+  }
+}

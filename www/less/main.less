@@ -32,6 +32,11 @@ body {
   color: @grey;
   font-size: @font-size;
   font-weight: 300;
+  &  > div:first-of-type {
+    display: none;
+    visibility: hidden;
+    height: 0;
+  }
 }
 
 p, li {
@@ -431,3 +436,4 @@ footer {
 
 @import 'partials/font-loaded.less';
 @import 'partials/loader-animated.less';
+@import 'vendors/fluidbox.less';
