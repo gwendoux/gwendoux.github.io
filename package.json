@@ -72,7 +72,7 @@
     "postcss-cli": "2.5.1",
     "purify-css": "1.1.9",
     "rimraf": "2.5.2",
-    "spritesh": "^1.0.10",
+    "spritesh": "1.0.10",
     "uglify-js": "2.6.2",
     "watch": "0.17.1",
     "watchify": "3.7.0"
@@ -87,6 +87,7 @@
   },
   "dependencies": {
     "loglevel": "1.4.0",
-    "moment": "2.12.0"
+    "moment": "2.12.0",
+    "url": "0.11.0"
   }
 }
