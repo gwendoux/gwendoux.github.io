@@ -2,6 +2,7 @@
 
 var $ = require('jquery');
 var moment = require('moment');
+var config = require('../../../config.json');
 
 $(document).ready(function() {
 
@@ -12,7 +13,7 @@ $(document).ready(function() {
 
     });
 
-    var coffeeRq = 'https://api.gwendoux.com/v1/photos/tag/coffeeoftheday';
+    var coffeeRq = config.base_url + 'v1/photos/tag/coffeeoftheday';
 
     $.ajax({
         url: coffeeRq,
@@ -41,7 +42,7 @@ $(document).ready(function() {
         }
     });
 
-    var feedRq = 'https://api.gwendoux.com/v1/links/feed';
+    var feedRq =  config.base_url + 'v1/links/feed';
 
     $.ajax({
         url: feedRq,
@@ -68,8 +69,3 @@ $(document).ready(function() {
             $('#pinboardfeed').html('<div class="alert">cannot get data from pinboard</div>');
         }
     });
-
-    // find a better way to add this class
-    // wait until full image is downloaded and available
-    $('.cover-wrapper').addClass('cover-wrapper-enhanced');
-});
