@@ -2,6 +2,8 @@
 
 var $ = require('jquery');
 var moment = require('moment');
+
+var utilities = require('./utilities');
 var config = require('../../../config.json');
 
 $(document).ready(function() {
@@ -42,7 +44,7 @@ $(document).ready(function() {
         }
     });
 
-    var feedRq =  config.base_url + 'v1/links/feed';
+    var feedRq = config.base_url + 'v1/links/';
 
     $.ajax({
         url: feedRq,
@@ -54,11 +56,11 @@ $(document).ready(function() {
             $.each(res, function(key, val) {
                 html.push('<div class="col-md-4 col-xs-12 reading-list">');
                 html.push('<div class="link-wrap">');
-                html.push('<a class="block-link" href="' + val.url + '">');
-                html.push('<h4>' + val.title + '</h4>');
-                html.push('<p><em>' + val.desc + '</em></p>');
-                html.push('<p class="smaller"><em>saved ' + moment(val.date).fromNow() + '</em></p>');
-                html.push('<p class="smaller">source: ' + val.source + '</p>');
+                html.push('<a class="block-link" href="' + val.href + '">');
+                html.push('<h4>' + val.description + '</h4>');
+                html.push('<p><em>' + val.extended + '</em></p>');
+                html.push('<p class="smaller"><em>saved ' + moment(val.time).fromNow() + '</em></p>');
+                html.push('<p class="smaller">source: ' + utilities.getSource(val.href) + '</p>');
                 html.push('</a>');
                 html.push('</div>');
                 html.push('</div>');
@@ -69,3 +71,8 @@ $(document).ready(function() {
             $('#pinboardfeed').html('<div class="alert">cannot get data from pinboard</div>');
         }
     });
+
+    // find a better way to add this class
+    // wait until full image is downloaded and available
+    $('.cover-wrapper').addClass('cover-wrapper-enhanced');
+});
