@@ -30,7 +30,7 @@
     "build:template": "grunt renderNunjucks",
     "prebuild:svg": "rimraf www/svg/*",
     "build:svg:index": "spritesh --input svg/index/ --output www/svg/ss--index-icons.svg --prefix icon-",
-    "build:svg:resume": "spritesh --input svg/resume/ --output www/svg/ss--index-resume.svg --prefix icon-",
+    "build:svg:resume": "spritesh --input svg/resume/ --output www/svg/ss--resume-icons.svg --prefix icon-",
     "build": "npm run build:template && npm run build:css && npm run build:js && npm run build:svg:index && npm run build:svg:resume",
     "clean": "rimraf  www/svg/* www/*.html www/js/*.min.* www/css/** dist",
     "prepackage": "rimraf dist && npm run build",
