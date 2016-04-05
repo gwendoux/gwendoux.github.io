@@ -1,21 +1,6 @@
 
 @import 'partials/fonts.less';
-
-@main-font: 'Roboto Light', sans-serif;
-@light-font: 'Roboto Thin', sans-serif;
-@fancy-font: 'Megrim', cursive;
-@font-size: 16px;
-
-@black: #000;
-@white: #FFF;
-@grey: #585c65;
-@mediumgrey: #9b9b9b;
-@lightgrey: #eeeeee;
-@blue: #3466a1;
-@red: #FF5370;
-
-@padding: .6em;
-@margin: .6em;
+@import 'partials/_variables.less';
 
 /*
 * Override Bootstrap variables
@@ -291,9 +276,27 @@ p {
 .smaller {
   font-size: 75%;
 }
+
 .reading-list {
-  display: inline-block;
-  padding: .5em;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hide-items {
+    overflow: hidden;
+    transition: all 0.5s ease;
+    .reading-list--items {
+      display: none;
+    }
+    /* select items 1 through 3 and show them */
+    .reading-list--items:nth-child(-n+3) {
+      display: inline-block;
+    }
+}
+
+.reading-list--items {
+  padding: .5rem;
+  margin-bottom: 2.5rem;
 }
 
 .pinboard-link {
@@ -433,6 +436,6 @@ footer {
   }
 }
 
+@import 'partials/buttons.less';
 @import 'partials/font-loaded.less';
 @import 'partials/loader-animated.less';
-@import 'vendors/fluidbox.less';

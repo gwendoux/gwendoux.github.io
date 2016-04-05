@@ -3,6 +3,9 @@
 var $ = require('jquery');
 var moment = require('moment');
 
+var utilities = require('./utilities');
+var config = require('../../../config.json');
+
 $(document).ready(function() {
 
     $.get("svg/ss--index-icons.svg", function(data) {
@@ -12,7 +15,7 @@ $(document).ready(function() {
 
     });
 
-    var coffeeRq = 'https://api.gwendoux.com/v1/photos/tag/coffeeoftheday';
+    var coffeeRq = config.base_url + 'v1/photos/tag/coffeeoftheday';
 
     $.ajax({
         url: coffeeRq,
@@ -41,7 +44,7 @@ $(document).ready(function() {
         }
     });
 
-    var feedRq = 'https://api.gwendoux.com/v1/links/feed';
+    var feedRq = config.base_url + 'v1/links/';
 
     $.ajax({
         url: feedRq,
@@ -51,23 +54,31 @@ $(document).ready(function() {
         success: function(res) {
             var html = [];
             $.each(res, function(key, val) {
-                html.push('<div class="col-md-4 col-xs-12 reading-list">');
+                html.push('<div class="col-md-4 col-xs-12 reading-list--items">');
                 html.push('<div class="link-wrap">');
-                html.push('<a class="block-link" href="' + val.url + '">');
-                html.push('<h4>' + val.title + '</h4>');
-                html.push('<p><em>' + val.desc + '</em></p>');
-                html.push('<p class="smaller"><em>saved ' + moment(val.date).fromNow() + '</em></p>');
-                html.push('<p class="smaller">source: ' + val.source + '</p>');
+                html.push('<a class="block-link" href="' + val.href + '">');
+                html.push('<h4>' + val.description + '</h4>');
+                html.push('<p><em>' + val.extended + '</em></p>');
+                html.push('<p class="smaller"><em>saved ' + moment(val.time).fromNow() + '</em></p>');
+                html.push('<p class="smaller">source: ' + utilities.getSource(val.href) + '</p>');
                 html.push('</a>');
                 html.push('</div>');
                 html.push('</div>');
             });
+            html.push('<div class="col-md-12 col-xs-12 text-centered pinboard-link">');
+            html.push('<button id="show-more-items" class="button">Show more items</button>');
+            html.push('</div>');
             $('#pinboardfeed').html(html.join(''));
         },
         error: function(err) {
             $('#pinboardfeed').html('<div class="alert">cannot get data from pinboard</div>');
         }
     });
+
+    $('#pinboardfeed').on('click', '#show-more-items', function() {
+        $('.hide-items').removeClass('hide-items');
+        $(this).before('<a href="https://pinboard.in/u:Gwendoux">View all on Pinboard.in</a>').remove();
+    })
 
     // find a better way to add this class
     // wait until full image is downloaded and available
