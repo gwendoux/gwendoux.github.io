@@ -65,12 +65,20 @@ $(document).ready(function() {
                 html.push('</div>');
                 html.push('</div>');
             });
+            html.push('<div class="col-md-12 col-xs-12 text-centered pinboard-link">');
+            html.push('<button id="show-more-items" class="button">Show more items</button>');
+            html.push('</div>');
             $('#pinboardfeed').html(html.join(''));
         },
         error: function(err) {
             $('#pinboardfeed').html('<div class="alert">cannot get data from pinboard</div>');
         }
     });
+
+    $('#pinboardfeed').on('click', '#show-more-items', function() {
+        $('.hide-items').removeClass('hide-items');
+        $(this).before('<a href="https://pinboard.in/u:Gwendoux">View all on Pinboard.in</a>').remove();
+    })
 
     // find a better way to add this class
     // wait until full image is downloaded and available
