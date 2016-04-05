@@ -277,20 +277,24 @@ p {
   font-size: 75%;
 }
 
+.reading-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .hide-items {
     overflow: hidden;
     transition: all 0.5s ease;
-    .reading-list {
+    .reading-list--items {
       display: none;
     }
     /* select items 1 through 3 and show them */
-    .reading-list:nth-child(-n+3) {
+    .reading-list--items:nth-child(-n+3) {
       display: inline-block;
     }
 }
 
-.reading-list {
+.reading-list--items {
   padding: .5rem;
   margin-bottom: 2.5rem;
 }
