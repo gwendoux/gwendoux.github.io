@@ -54,7 +54,7 @@ $(document).ready(function() {
         success: function(res) {
             var html = [];
             $.each(res, function(key, val) {
-                html.push('<div class="col-md-4 col-xs-12 reading-list">');
+                html.push('<div class="col-md-4 col-xs-12 reading-list--items">');
                 html.push('<div class="link-wrap">');
                 html.push('<a class="block-link" href="' + val.href + '">');
                 html.push('<h4>' + val.description + '</h4>');
