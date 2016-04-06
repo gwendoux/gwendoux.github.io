@@ -78,7 +78,7 @@ $(document).ready(function() {
     $('#pinboardfeed').on('click', '#show-more-items', function() {
         $('.hide-items').removeClass('hide-items');
         $(this).before('<a href="https://pinboard.in/u:Gwendoux">View all on Pinboard.in</a>').remove();
-    })
+    });
 
     // find a better way to add this class
     // wait until full image is downloaded and available

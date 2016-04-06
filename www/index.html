@@ -1,6 +1,46 @@
-{% extends "./layout/layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>gwendoux.com</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="preconnect" href="/fonts/Megrim-subset.woff">
+  <link rel="preconnect" href="/fonts/Roboto-Light-subset.woff">
+  <link rel="preconnect" href="/fonts/Roboto-Thin-subset.woff">
+  <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+  <script type="text/javascript">
+    WebFontConfig = {
+      custom: {
+        families: ['Megrim', 'Roboto Light', 'Roboto Thin']
+      },
+      active: function() {
+        sessionStorage.fonts = true;
+      }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-{% block content %}
+    ga('create', 'UA-716784-9', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+</head>
+<body>
+
   <header class="cover-wrapper">
     <div class="name fancy-font">
           gwendoux.com
@@ -89,7 +129,9 @@
               Reading List <small>#somethingtoread</small>
             </h2>
             <div id="pinboardfeed" class="reading-list hide-items">
-              {% include "./partials/_loader.html" %}
+              <div class="loader">
+                <div class="spinner"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -103,7 +145,9 @@
                 <h2 class="special-header" >Latest Coffee Beans <small>#coffeeoftheday</small></h2>
                 <div class="row photos-wrap">
                   <div id="instafeed">
-                    {% include "./partials/_loader.html" %}
+                    <div class="loader">
+                      <div class="spinner"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -127,4 +171,7 @@
       <section class="footer-bottom">
         2015 &copy; Gwen Doux. <a href="https://github.com/gwendoux/gwendoux" rel="me">see what' going on under</a>
       </section>
-{% endblock %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script async defer src="/js/script.min.js"></script>
+</body>
+</html>
