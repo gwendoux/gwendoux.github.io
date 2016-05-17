@@ -79,7 +79,7 @@ document.getElementById('pinboardfeed').addEventListener('click', function(evt) 
         var $moreitems  = document.getElementById('show-more-items');
         $moreitems.insertAdjacentHTML('beforebegin', '<a href="https://pinboard.in/u:Gwendoux">View all on Pinboard.in</a>');
         $moreitems.parentNode.removeChild($moreitems);
-	    }
+    }
 });
 
 // https://css-tricks.com/the-blur-up-technique-for-loading-background-images/
