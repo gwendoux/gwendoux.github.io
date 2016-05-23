@@ -15,6 +15,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "lint:css": "stylelint --syntax less www/less/**/*.less",
     "postinstall": "npm prune",
     "start": "browser-sync start --config bs-config.js",
     "build:css:index": "mkdirp www/css && lessc www/less/main.less | postcss -u autoprefixer -u pixrem -c postcss.json | cleancss > www/css/main.min.css",
@@ -52,6 +53,7 @@
     "purify-css": "1.1.9",
     "rimraf": "2.5.2",
     "spritesh": "1.2.0",
+    "stylelint": "^6.4.1",
     "uglify-js": "2.6.2",
     "watchify": "3.7.0"
   },
