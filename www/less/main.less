@@ -1,10 +1,7 @@
 
-@import 'partials/fonts.less';
-@import 'partials/_variables.less';
+@import "partials/fonts.less";
+@import "partials/_variables.less";
 
-/*
-* Override Bootstrap variables
-*/
 
 * {
   position: relative;
@@ -22,7 +19,8 @@ body {
   }
 }
 
-p, li {
+p,
+li {
   font-size: 1.125em;
   line-height: 1.435em;
   @media (min-width: 1120px) {
@@ -97,17 +95,18 @@ header {
     }
   }
 
-  h1, h2 {
+  h1,
+  h2 {
     width: 100%;
     color: @white;
     margin: 0;
   }
   h1 {
-    //font-family: 'Roboto Bold', sans-serif;
+    //font-family: "Roboto Bold", sans-serif;
     text-transform: uppercase;
     //font-weight: 300;
     font-size: 4em;
-    letter-spacing: 0.06em;
+    letter-spacing: .06em;
     margin-bottom: @margin;
     @media (max-height: 700px) {
       font-size: 2.75em;
@@ -163,7 +162,7 @@ header {
     a {
       float: left;
       margin: 0 .25em;
-      opacity: 0.8;
+      opacity: .8;
       display: inline-block;
       padding: .5em;
       @media (max-width: 400px) {
@@ -212,18 +211,18 @@ header {
 .cover-wrapper {
     position: relative;
     // use relative url for data-uri images
-    background: #356D46 data-uri('image/jpeg;base64', '../img/kubist-tiny.jpg') center/cover;
+    background: #356D46 data-uri("image/jpeg;base64", "../img/kubist-tiny.jpg") center/cover;
     width: 100%;
     height: 100vh;
     min-height: 26em;
     max-height: 54em;
     //@media (min-width: 720px) and (-webkit-min-device-pixel-ratio: 2) {
-    //  background: #356D46 url('/img/kubist.svg') center/cover;
+    //  background: #356D46 url("/img/kubist.svg") center/cover;
     //}
 }
 
 .cover-wrapper-enhanced {
-  background-image: url('/img/kubist.svg');
+  background-image: url("/img/kubist.svg");
 }
 
 h4 {
@@ -252,7 +251,7 @@ h4 {
 }
 .special-header {
   text-transform: uppercase;
-  letter-spacing: 0.5em;
+  letter-spacing: .5em;
   font-size:1.25em;
   font-weight: 700;
   text-align: center;
@@ -266,9 +265,6 @@ p {
 .hyphenate {
   overflow-wrap: break-word;
   word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
   hyphens: auto;
 }
 .smaller {
@@ -282,7 +278,7 @@ p {
 
 .hide-items {
     overflow: hidden;
-    transition: all 0.5s ease;
+    transition: all .5s ease;
     .reading-list--items {
       display: none;
     }
@@ -350,16 +346,6 @@ p {
   .image-wrap {
     img {
       width: 100%;
-    }
-
-    .likes {
-      position: absolute;
-      bottom: 5px;
-      left: 15px;
-      padding: @padding/2;
-      background: @black;
-      background: rgba(red(@black), green(@black), blue(@black), 0.4);
-      color: @white;
     }
   }
   .description {
@@ -434,6 +420,6 @@ footer {
   }
 }
 
-@import 'partials/buttons.less';
-@import 'partials/font-loaded.less';
-@import 'partials/loader-animated.less';
+@import "partials/buttons.less";
+@import "partials/font-loaded.less";
+@import "partials/loader-animated.less";
