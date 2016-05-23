@@ -13,8 +13,8 @@
   "author": "gwendoux",
   "license": "ISC",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "lint:js": "eslint .",
+    "lint:js:fix": "eslint --fix .",
     "lint:css": "stylelint --syntax less www/less/**/*.less",
     "postinstall": "npm prune",
     "start": "browser-sync start --config bs-config.js",
@@ -29,6 +29,7 @@
     "build:js:watch": "watchify www/js/lib/behavior.js -o www/js/script.min.js -v",
     "prebuild:svg": "rimraf www/svg/* && mkdir -p www/svg",
     "build:svg": "spritesh --input svg/index/ --output www/svg/ss--index-icons.svg --prefix icon- && spritesh --input svg/resume/ --output www/svg/ss--resume-icons.svg --prefix icon-",
+    "prebuild": "npm run lint:js && npm run lint:css",
     "build": "npm run build:css && npm run build:js && npm run build:svg",
     "clean": "rimraf  www/svg/* www/js/*.min.* www/css/** dist",
     "prepackage": "rimraf dist && npm run build",
