@@ -24,7 +24,6 @@ jsonp(coffeeRq, function(err, data) {
     }
     var html = [];
     data.slice(0, 6).forEach(function(val) {
-        html.push('<div class="col-xs-12 col-sm-6 col-md-4">');
         html.push('<div class="photo-box">');
         html.push('<div class="image-wrap">');
         html.push('<img src="' + val.image.standard + '">');
@@ -32,7 +31,6 @@ jsonp(coffeeRq, function(err, data) {
         html.push('<div class="description">');
         html.push(val.image.caption);
         html.push('<div class="date">' + moment(val.image.date, 'X').fromNow() + '</div>');
-        html.push('</div>');
         html.push('</div>');
         html.push('</div>');
     });
@@ -48,7 +46,7 @@ jsonp(feedRq, function(err, data) {
     }
     var html = [];
     data.forEach(function(val) {
-        html.push('<div class="col-md-4 col-xs-12 reading-list--items">');
+        html.push('<div class="reading-list--items">');
         html.push('<div class="link-wrap">');
         html.push('<a class="block-link" href="' + val.href + '">');
         html.push('<h4>' + val.description + '</h4>');
@@ -59,8 +57,8 @@ jsonp(feedRq, function(err, data) {
         html.push('</div>');
         html.push('</div>');
     });
-    html.push('<div class="col-md-12 col-xs-12 text-centered pinboard-link">');
-    html.push('<button id="show-more-items" class="button">Show more items</button>');
+    html.push('<div class="text-centered pinboard-link">');
+    html.push('<button id="show-more-items">Show more items</button>');
     html.push('</div>');
     $pinboardfeed.innerHTML = html.join('');
 });
