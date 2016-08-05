@@ -11,7 +11,6 @@
   "max-empty-lines": 5,
   "number-leading-zero": "never",
   "number-no-trailing-zeros": true,
-  "property-no-vendor-prefix": true,
   "declaration-block-no-duplicate-properties": true,
   "declaration-block-trailing-semicolon": "always",
   "block-no-single-line": true,
