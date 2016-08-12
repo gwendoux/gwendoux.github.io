@@ -23,8 +23,6 @@ dist/
 config.json
 test/coverage/report.html
 
-www/*.html
-
 ss--*.svg
 _ss-*.html
 *.map
