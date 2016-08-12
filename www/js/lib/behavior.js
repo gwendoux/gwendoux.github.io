@@ -25,9 +25,7 @@ jsonp(coffeeRq, function(err, data) {
     var html = [];
     data.slice(0, 6).forEach(function(val) {
         html.push('<div class="photo-box">');
-        html.push('<div class="image-wrap">');
         html.push('<img src="' + val.image.standard + '">');
-        html.push('</div>');
         html.push('<div class="description">');
         html.push(val.image.caption);
         html.push('<div class="date">' + moment(val.image.date, 'X').fromNow() + '</div>');
