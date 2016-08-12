@@ -13,6 +13,7 @@
   "author": "gwendoux",
   "license": "ISC",
   "watch": {
+    "build:js": "www/js/lib/*.js",
     "build:svg": "svg/{index, resume}/*.svg",
     "build:css:index": {
       "patterns": "www/less/**/*",
@@ -26,14 +27,12 @@
     "lint:js:fix": "eslint --fix .",
     "lint:css": "stylelint --syntax less www/less/**/*.less",
     "postinstall": "npm prune",
-    "start": "browser-sync start --config bs-config.js",
     "build:css:index": "mkdirp www/css && lessc www/less/main.less | postcss -u autoprefixer -u pixrem -c postcss.json | cleancss > www/css/main.min.css",
     "build:css:resume": "mkdirp www/css && lessc www/less/resume.less | postcss -u autoprefixer -u pixrem -c postcss.json | cleancss > www/css/resume.min.css",
     "prebuild:css": "rimraf www/css/**",
     "build:css": "parallelshell 'npm run build:css:index' 'npm run build:css:resume'",
     "prebuild:js": "rimraf www/js/*.min.*",
     "build:js": "browserify www/js/lib/behavior.js | uglifyjs - --verbose --stats --compress --screw-ie8 > www/js/script.min.js",
-    "build:js:watch": "watchify www/js/lib/behavior.js -o www/js/script.min.js -v",
     "prebuild:svg": "rimraf www/svg/* && mkdir -p www/svg",
     "build:svg": "spritesh --input svg/index/ --output www/svg/ss--index-icons.svg --prefix icon- && spritesh --input svg/resume/ --output www/svg/ss--resume-icons.svg --prefix icon-",
     "prebuild": "npm run lint:js && npm run lint:css",
@@ -47,29 +46,27 @@
     "watch": "npm-watch"
   },
   "devDependencies": {
-    "autoprefixer": "6.3.6",
-    "browser-sync": "^2.12.12",
-    "browserify": "13.0.1",
-    "clean-css": "^3.4.17",
-    "convict": "^1.4.0",
-    "eslint": "^2.11.1",
+    "autoprefixer": "6.4.0",
+    "browserify": "13.1.0",
+    "clean-css": "3.4.19",
+    "convict": "1.4.0",
+    "eslint": "3.2.2",
     "less": "2.7.1",
     "mkdirp": "0.5.1",
     "ncp": "2.0.0",
-    "npm-watch": "^0.1.4",
+    "npm-watch": "0.1.6",
     "parallelshell": "2.0.0",
-    "pixrem": "^3.0.1",
+    "pixrem": "3.0.1",
     "postcss-cli": "2.5.2",
-    "rimraf": "2.5.2",
+    "rimraf": "2.5.4",
     "spritesh": "1.2.0",
-    "stylelint": "6.5.1",
-    "uglify-js": "2.6.2",
+    "stylelint": "7.1.0",
+    "uglify-js": "2.7.0",
     "watchify": "3.7.0"
   },
   "dependencies": {
     "fetch-jsonp": "1.0.0",
     "loglevel": "1.4.1",
-    "moment": "2.13.0",
     "url": "0.11.0"
   }
 }
