@@ -1,7 +1,7 @@
 'use strict';
 
 var moment = require('moment');
-var jsonp = require('jsonp');
+var fetchJsonp = require('fetch-jsonp');
 var utilities = require('./utilities');
 var config = require('../../../config.json');
 
@@ -17,7 +17,7 @@ ajax.onload = function(e) {
 
 var coffeeRq = config.base_url + 'v1/photos/tag/coffeeoftheday';
 
-jsonp(coffeeRq, function(err, data) {
+fetchJsonp(coffeeRq, function(err, data) {
     var $instafeed = document.getElementById('instafeed');
     if(err) {
         $instafeed.innerHTML = '<div class="alert" data-err="'+err+'">cannot get data from instagram</div>';
@@ -37,7 +37,7 @@ jsonp(coffeeRq, function(err, data) {
 
 var feedRq = config.base_url + 'v1/links/';
 
-jsonp(feedRq, function(err, data) {
+fetchJsonp(feedRq, function(err, data) {
     var $pinboardfeed = document.getElementById('pinboardfeed');
     if(err) {
         $pinboardfeed.innerHTML = '<div class="alert" data-err="'+err+'">cannot get data from pinboard</div>';

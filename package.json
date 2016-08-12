@@ -67,8 +67,8 @@
     "watchify": "3.7.0"
   },
   "dependencies": {
-    "jsonp": "0.2.0",
-    "loglevel": "^1.4.1",
+    "fetch-jsonp": "1.0.0",
+    "loglevel": "1.4.1",
     "moment": "2.13.0",
     "url": "0.11.0"
   }
