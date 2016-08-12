@@ -1,6 +1,5 @@
 'use strict';
 
-var moment = require('moment');
 var fetchJsonp = require('fetch-jsonp');
 var utilities = require('./utilities');
 
@@ -30,7 +29,7 @@ fetchJsonp(coffeeRq)
             html.push('<img src="' + val.image.standard + '">');
             html.push('<div class="description">');
             html.push(val.image.caption);
-            html.push('<div class="date">' + moment(val.image.date, 'X').fromNow() + '</div>');
+            html.push('<div class="date">' + val.image.since + '</div>');
             html.push('</div>');
             html.push('</div>');
         });
@@ -50,7 +49,7 @@ fetchJsonp(feedRq)
             html.push('<a class="block-link" href="' + val.href + '">');
             html.push('<h4>' + val.description + '</h4>');
             html.push('<p><em>' + val.extended + '</em></p>');
-            html.push('<p class="smaller"><em>saved ' + moment(val.time).fromNow() + '</em></p>');
+            html.push('<p class="smaller"><em>saved ' + val.since + '</em></p>');
             html.push('<p class="smaller">source: ' + utilities.getSource(val.href) + '</p>');
             html.push('</a>');
             html.push('</div>');
