@@ -3,7 +3,6 @@
 var moment = require('moment');
 var fetchJsonp = require('fetch-jsonp');
 var utilities = require('./utilities');
-var config = require('../../../config.json');
 
 var ajax = new XMLHttpRequest();
 
@@ -15,7 +14,7 @@ ajax.onload = function(e) {
     document.body.insertBefore(div, document.body.childNodes[0]);
 };
 
-var coffeeRq = config.base_url + 'v1/photos/tag/coffeeoftheday';
+var coffeeRq = utilities.apiBaseUrl() + '/v1/photos/tag/coffeeoftheday';
 
 fetchJsonp(coffeeRq, function(err, data) {
     var $instafeed = document.getElementById('instafeed');
@@ -35,7 +34,7 @@ fetchJsonp(coffeeRq, function(err, data) {
     $instafeed.innerHTML = html.join('');
 });
 
-var feedRq = config.base_url + 'v1/links/';
+var feedRq = utilities.apiBaseUrl() + '/v1/links/';
 
 fetchJsonp(feedRq, function(err, data) {
     var $pinboardfeed = document.getElementById('pinboardfeed');
