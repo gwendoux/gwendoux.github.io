@@ -95,12 +95,17 @@ header {
       padding: 1rem;
       text-align: center;
     }
+    @media (max-width: 400px) {
+      padding: .5rem;
+    }
     a {
       margin: 0 .25em;
       opacity: .8;
       display: inline-block;
       padding: .5em;
-
+      @media (max-width: 400px) {
+        padding: .25rem;
+      }
       [class*="icon-ss-"] {
         fill: white;
         width: 2.5rem;
@@ -118,15 +123,8 @@ header {
     text-align: center;
     padding: 1em;
     background-color: rgba(126,176,136,.25);
-    @media (max-height: 920px) {
-
-    }
-
-    @media screen and (min-width: 1200px) {
-
-    }
-    @media (max-width: 320px) {
-      font-size: 90%;
+    @media (max-width: 420px) {
+      font-size: 84%;
     }
   }
 
@@ -181,7 +179,9 @@ h3 {
 .scroll-to-next {
   position: absolute;
   bottom: 0;
-  left: calc(50% - (3.75em/2));
+  left: 0;
+  right: 0;
+  text-align: center;
   a:hover, a:active {
     text-decoration: none;
   }
@@ -219,13 +219,17 @@ h4 {
   color: darken(@blue, 15%);
 }
 
+[class^="content-wrap"] {
+  padding: 1em 1.5em 2.5em;
+  @media (max-width: 420px) {
+    padding: 1em .5em 1.5em;
+  }
+}
 .content-wrap {
   background: @lightgrey;
-  padding: 1em 1.5em 2.5em;
 }
 .content-wrap-alt {
   background: white;
-  padding: 1em 1.5em 2.5em;
 }
 
 
@@ -255,6 +259,9 @@ h4 {
   text-align: center;
   padding: 1em 0;
   color: darken(@lightgrey, 20%);
+  @media (max-width: 360px) {
+    letter-spacing: .375em;
+  }
 }
 p {
   .hyphenate;
