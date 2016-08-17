@@ -64,7 +64,7 @@ fetchJsonp(feedRq)
     });
 
 
-$instafeed .addEventListener('click', function(evt) {
+$pinboardfeed.addEventListener('click', function(evt) {
     if (evt.target && evt.target.matches("#show-more-items")) {
         var className = 'hide-items';
         if ($pinboardfeed.classList) {
