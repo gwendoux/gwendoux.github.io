@@ -17,7 +17,6 @@ var coffeeRq = utilities.apiBaseUrl() + '/v1/photos/tag/coffeeoftheday';
 var feedRq = utilities.apiBaseUrl() + '/v1/links/';
 var $instafeed = document.getElementById('instafeed');
 var $pinboardfeed = document.getElementById('pinboardfeed');
-var $moreitems  = document.getElementById('show-more-items');
 
 fetchJsonp(coffeeRq)
     .then(function(response) {
@@ -73,7 +72,7 @@ $pinboardfeed.addEventListener('click', function(evt) {
             $pinboardfeed.className = $pinboardfeed.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
         }
 
-
+        var $moreitems  = document.getElementById('show-more-items');
         $moreitems.insertAdjacentHTML('beforebegin', '<a href="https://pinboard.in/u:Gwendoux">View all on Pinboard.in</a>');
         $moreitems.parentNode.removeChild($moreitems);
     }
