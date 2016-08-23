@@ -32,7 +32,7 @@
     "prebuild:css": "rimraf www/css/**",
     "build:css": "parallelshell 'npm run build:css:index' 'npm run build:css:resume'",
     "prebuild:js": "rimraf www/js/*.min.*",
-    "build:js": "browserify www/js/lib/behavior.js | uglifyjs - --verbose --stats --compress --screw-ie8 > www/js/script.min.js",
+    "build:js": "browserify -p bundle-collapser/plugin www/js/lib/behavior.js | uglifyjs - --verbose --stats --compress --screw-ie8 > www/js/script.min.js",
     "prebuild:svg": "rimraf www/svg/* && mkdir -p www/svg",
     "build:svg": "spritesh --input svg/index/ --output www/svg/ss--index-icons.svg --prefix icon- && spritesh --input svg/resume/ --output www/svg/ss--resume-icons.svg --prefix icon-",
     "prebuild": "npm run lint:js && npm run lint:css",
@@ -47,6 +47,7 @@
   "devDependencies": {
     "autoprefixer": "6.4.0",
     "browserify": "13.1.0",
+    "bundle-collapser": "1.2.1",
     "clean-css": "3.4.19",
     "convict": "1.4.0",
     "eslint": "3.2.2",
