@@ -3,6 +3,11 @@
 var fetchJsonp = require('fetch-jsonp');
 var utilities = require('./utilities');
 
+/*
+** Asynchronously load svg icons
+** and insert just after cody element
+*/
+
 var ajax = new XMLHttpRequest();
 
 ajax.open("GET", "svg/ss--index-icons.svg", true);
@@ -73,13 +78,21 @@ $pinboardfeed.addEventListener('click', function(evt) {
             $pinboardfeed.className = $pinboardfeed.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
         }
 
+        var linkTo = document.createElement('a');
+        var linkToText = document.createTextNode('View all on Pinboard.in');
+        linkTo.setAttribute('href', 'https://pinboard.in/u:Gwendoux');
+        linkTo.appendChild(linkToText);
 
-        $moreitems.insertAdjacentHTML('beforebegin', '<a href="https://pinboard.in/u:Gwendoux">View all on Pinboard.in</a>');
+        $moreitems.insertAdjacentHTML('beforebegin', linkTo);
         $moreitems.parentNode.removeChild($moreitems);
     }
 });
 
-// https://css-tricks.com/the-blur-up-technique-for-loading-background-images/
+/*
+** Load good quality background image
+** https://css-tricks.com/the-blur-up-technique-for-loading-background-images/
+*/
+
 window.onload = function loadStuff() {
     var img = new Image();
     var header = window.document.querySelector('.cover-wrapper');
