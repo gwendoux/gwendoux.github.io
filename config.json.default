@@ -1,5 +1,0 @@
-{
-  "env": "development",
-  "log_level": "trace",
-  "port": 8014
-}
