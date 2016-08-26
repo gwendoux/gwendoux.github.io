@@ -31,7 +31,8 @@ fetchJsonp(coffeeRq)
         var html = [];
         json.slice(0, 6).forEach(function(val) {
             html.push('<div class="photo-box">');
-            html.push('<img src="' + val.image.standard + '">');
+            html.push('<img src="' + val.image.standard);
+            html.push('" width="640" height="640" alt="' + val.image.caption + '">');
             html.push('<div class="description">');
             html.push(val.image.caption);
             html.push('<div class="date">' + val.image.since + '</div>');
