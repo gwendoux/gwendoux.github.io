@@ -59,6 +59,7 @@ ul {
 header {
   overflow: hidden;
   background-color: #2D313E;
+  background-attachment: fixed;
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
@@ -339,6 +340,7 @@ p {
   max-width: calc(33%-@margin*3*2*3);
   img {
       width: 100%;
+      height: auto;
   }
   .description {
     font-weight: 100;
@@ -397,20 +399,6 @@ footer {
     &:hover {
       background: lighten(@grey, 5%);
     }
-  }
-}
-
-.footer-bottom {
-  background: @white;
-  padding: @padding @padding*6;
-  border-top: 2px solid @lightgrey;
-  letter-spacing: 2px;
-  text-align: center;
-  color: @mediumgrey;
-  text-transform: uppercase;
-
-  @media screen and (min-width: 992px) {
-    padding: @padding*4 0;
   }
 }
 
