@@ -78,12 +78,14 @@ $pinboardfeed.addEventListener('click', function(evt) {
             $pinboardfeed.className = $pinboardfeed.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
         }
 
-        var linkTo = document.createElement('a');
+        var $moreitems  = document.getElementById('show-more-items');
+        var $linkTo = document.createElement('a');
         var linkToText = document.createTextNode('View all on Pinboard.in');
-        linkTo.setAttribute('href', 'https://pinboard.in/u:Gwendoux');
-        linkTo.appendChild(linkToText);
+        $linkTo.setAttribute('href', 'https://pinboard.in/u:Gwendoux');
+        $linkTo.setAttribute('class', 'btn');
+        $linkTo.appendChild(linkToText);
 
-        $moreitems.insertAdjacentHTML('beforebegin', linkTo);
+        $moreitems.insertAdjacentElement('beforebegin', $linkTo);
         $moreitems.parentNode.removeChild($moreitems);
     }
 });
