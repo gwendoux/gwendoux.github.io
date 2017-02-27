@@ -15,7 +15,7 @@
   "watch": {
     "build:js": "www/js/lib/*.js",
     "build:svg": "svg/index/*.svg",
-    "build:css:index": {
+    "build:css": {
       "patterns": "www/less/**/*",
       "extensions": "less"
     }
