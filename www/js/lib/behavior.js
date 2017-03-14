@@ -2,7 +2,7 @@
 
 var fetchJsonp = require('fetch-jsonp');
 var utilities = require('./utilities');
-
+var moment = require('moment');
 /*
 ** Asynchronously load svg icons
 ** and insert just after cody element
@@ -18,8 +18,8 @@ ajax.onload = function(e) {
     document.body.insertBefore(div, document.body.childNodes[0]);
 };
 
-var coffeeRq = utilities.apiBaseUrl() + '/v1/photos/tag/coffeeoftheday';
-var feedRq = utilities.apiBaseUrl() + '/v1/links/';
+var coffeeRq = utilities.apiBaseUrl() + '/v2/photos/';
+var feedRq = utilities.apiBaseUrl() + '/v2/links/';
 var $instafeed = document.getElementById('instafeed');
 var $pinboardfeed = document.getElementById('pinboardfeed');
 
@@ -28,13 +28,13 @@ fetchJsonp(coffeeRq)
         return response.json();
     }).then(function(json) {
         var html = [];
-        json.slice(0, 6).forEach(function(val) {
+        json.forEach(function(val) {
             html.push('<div class="photo-box">');
-            html.push('<img src="' + val.image.standard);
-            html.push('" width="640" height="640" alt="' + val.image.caption + '">');
+            html.push('<img src="' + val.image.url);
+            html.push('" width="640" height="640" alt="' + val.caption + '">');
             html.push('<div class="description">');
-            html.push(val.image.caption);
-            html.push('<div class="date">' + val.image.since + '</div>');
+            html.push(val.caption);
+            html.push('<div class="date">' + moment(val.date).fromNow() + '</div>');
             html.push('</div>');
             html.push('</div>');
         });
@@ -42,6 +42,7 @@ fetchJsonp(coffeeRq)
     }).catch(function(err) {
         $instafeed.innerHTML = '<div class="alert" data-err="'+err+'">cannot get data from instagram</div>';
     });
+
 
 fetchJsonp(feedRq)
     .then(function(response) {
@@ -51,11 +52,11 @@ fetchJsonp(feedRq)
         json.forEach(function(val) {
             html.push('<div class="reading-list--items">');
             html.push('<div class="link-wrap">');
-            html.push('<a class="block-link" href="' + val.href + '">');
-            html.push('<h4>' + val.description + '</h4>');
-            html.push('<p><em>' + val.extended + '</em></p>');
-            html.push('<p class="smaller"><em>saved ' + val.since + '</em></p>');
-            html.push('<p class="smaller">source: ' + utilities.getSource(val.href) + '</p>');
+            html.push('<a class="block-link" href="' + val.url + '">');
+            html.push('<h4>' + val.title + '</h4>');
+            html.push('<p><em>' + val.description + '</em></p>');
+            html.push('<p class="smaller"><em>saved ' + moment(val.date).fromNow() + '</em></p>');
+            html.push('<p class="smaller">source: ' + utilities.getSource(val.url) + '</p>');
             html.push('</a>');
             html.push('</div>');
             html.push('</div>');
