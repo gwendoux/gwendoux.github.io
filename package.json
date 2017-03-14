@@ -41,30 +41,30 @@
     "watch": "npm-watch"
   },
   "devDependencies": {
-    "autoprefixer": "6.4.0",
-    "browserify": "13.1.0",
+    "autoprefixer": "6.7.7",
+    "browserify": "14.1.0",
     "bundle-collapser": "1.2.1",
-    "clean-css": "3.4.19",
-    "convict": "1.4.0",
-    "eslint": "3.2.2",
-    "less": "2.7.1",
+    "clean-css": "4.0.8",
+    "convict": "2.0.0",
+    "eslint": "3.17.1",
+    "less": "2.7.2",
     "mkdirp": "0.5.1",
     "ncp": "2.0.0",
     "node-version-assets": "1.2.0",
-    "npm-watch": "0.1.6",
+    "npm-watch": "0.1.8",
     "parallelshell": "2.0.0",
-    "pixrem": "3.0.1",
-    "postcss-cli": "2.5.2",
-    "rimraf": "2.5.4",
+    "pixrem": "3.0.2",
+    "postcss-cli": "3.0.0-beta",
+    "rimraf": "2.6.1",
     "spritesh": "1.2.0",
-    "stylelint": "7.1.0",
-    "uglify-js": "2.7.0",
-    "watchify": "3.7.0"
+    "stylelint": "7.9.0",
+    "uglify-js": "2.8.12",
+    "watchify": "3.9.0"
   },
   "dependencies": {
-    "fetch-jsonp": "1.0.0",
+    "fetch-jsonp": "1.0.6",
     "loglevel": "1.4.1",
     "url": "0.11.0",
-    "zooming": "1.0.10"
+    "zooming": "1.1.3"
   }
 }
