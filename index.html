@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>gwendoux.com</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <style/**
+   * 1. Change the default font family in all browsers (opinionated).
+   * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+   */
+  html {
+    font-family: sans-serif;
+    /* 1 */
+
+    -ms-text-size-adjust: 100%;
+    /* 2 */
+
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+
+  }
+  /**
+   * Remove the margin in all browsers (opinionated).
+   */
+  body {
+    margin: 0;
+  }
+  /* HTML5 display definitions
+     ========================================================================== */
+  /**
+   * Add the correct display in IE 9-.
+   * 1. Add the correct display in Edge, IE, and Firefox.
+   * 2. Add the correct display in IE.
+   */
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  main,
+  menu,
+  nav,
+  section,
+  summary {
+    /* 1 */
+
+    display: block;
+  }
+  /* Links
+     ========================================================================== */
+  /**
+   * 1. Remove the gray background on active links in IE 10.
+   * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+   */
+  a {
+    background-color: transparent;
+    /* 1 */
+
+    -webkit-text-decoration-skip: objects;
+    /* 2 */
+
+  }
+  /**
+   * Remove the outline on focused links when they are also active or hovered
+   * in all browsers (opinionated).
+   */
+  a:active,
+  a:hover {
+    outline-width: 0;
+  }
+  b,
+  strong {
+    font-weight: inherit;
+  }
+  /**
+   * Add the correct font weight in Chrome, Edge, and Safari.
+   */
+  b,
+  strong {
+    font-weight: bolder;
+  }
+  /**
+   * Correct the font size and margin on `h1` elements within `section` and
+   * `article` contexts in Chrome, Firefox, and Safari.
+   */
+  h1 {
+    font-size: 2em;
+    margin: .67em 0;
+  }
+  /**
+   * Add the correct font size in all browsers.
+   */
+  small {
+    font-size: 80%;
+  }
+  /* Embedded content
+     ========================================================================== */
+  /**
+   * Remove the border on images inside links in IE 10-.
+   */
+  img {
+    border-style: none;
+  }
+  /**
+   * Hide the overflow in IE.
+   */
+  svg:not(:root) {
+    overflow: hidden;
+  }
+  * {
+    position: relative;
+    box-sizing: border-box;
+  }
+  body {
+    color: #585c65;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  body > div:first-of-type {
+    display: none;
+    visibility: hidden;
+    height: 0;
+  }
+  a {
+    color: #3466a1;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #284e7a;
+    text-decoration: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+  }
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  p,
+  li {
+    font-size: 1.125em;
+    line-height: 1.435em;
+  }
+  @media (min-width: 1120px) {
+    p,
+    li {
+      font-size: 1.25em;
+    }
+  }
+  ul {
+    padding-left: 2.75em;
+  }
+  .container {
+    max-width: 970px;
+    margin: 0 auto;
+  }
+  @media (min-width: 768px) {
+    .container {
+      width: 100%;
+    }
+  }
+  header {
+    overflow: hidden;
+    background-color: #2D313E;
+    background-attachment: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  @media (max-width: 767px) {
+    header {
+      align-items: flex-start;
+      align-content: flex-start;
+    }
+  }
+  header .name {
+    font-size: 2.975em;
+    color: #fafafa;
+    width: 50%;
+    padding: 3rem 1rem;
+  }
+  @media (max-width: 767px) {
+    header .name {
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+    }
+  }
+  @media (max-width: 400px) {
+    header .name {
+      font-size: 2.5em;
+      text-align: center;
+      margin-left: 0;
+    }
+  }
+  header .social {
+    width: 50%;
+    overflow: hidden;
+    padding: 3rem 1rem;
+    line-height: 5.5rem;
+    text-align: right;
+  }
+  @media (max-width: 767px) {
+    header .social {
+      width: 100%;
+      padding: 1rem;
+      text-align: center;
+    }
+  }
+  @media (max-width: 400px) {
+    header .social {
+      padding: .5rem;
+    }
+  }
+  header .social a {
+    margin: 0 .25em;
+    opacity: .8;
+    display: inline-block;
+    padding: .5em;
+  }
+  @media (max-width: 400px) {
+    header .social a {
+      padding: .25rem;
+    }
+  }
+  header .social a [class*="icon-ss-"] {
+    fill: white;
+    width: 2.5rem;
+    height: 2.5rem;
+    transform: scaleY(-1);
+  }
+  header .social a:hover {
+    opacity: 1.0;
+  }
+  header .titles {
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    background-color: rgba(126, 176, 136, 0.25);
+  }
+  @media (max-width: 420px) {
+    header .titles {
+      font-size: 84%;
+    }
+  }
+  header h1,
+  header h2 {
+    width: 100%;
+    color: #fafafa;
+    margin: 0;
+  }
+  header h1 {
+    text-transform: uppercase;
+    font-size: 4em;
+    letter-spacing: .06em;
+    margin-bottom: 0.6em;
+  }
+  @media (max-height: 700px) {
+    header h1 {
+      font-size: 2.75em;
+    }
+  }
+  @media (max-height: 320px) {
+    header h1 {
+      font-size: 2em;
+    }
+  }
+  header h1 span {
+    display: block;
+  }
+  @media screen and (min-width: 992px) {
+    header h1 span {
+      display: inline;
+    }
+  }
+  header h2 {
+    font-size: 2.8em;
+    font-weight: 100;
+    width: 70%;
+    margin: 0 auto;
+  }
+  @media (max-height: 700px) {
+    header h2 {
+      font-size: 2em;
+    }
+  }
+  @media (max-height: 320px) {
+    header h2 {
+      font-size: 1.5em;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    header h2 {
+      width: 100%;
+      margin: 0;
+    }
+  }
+  .fancy-font {
+    font-family: serif;
+  }
+  h3 {
+    font-size: 1.5rem;
+  }
+  .scroll-to-next {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  .scroll-to-next a:hover,
+  .scroll-to-next a:active {
+    text-decoration: none;
+  }
+  .arrows {
+    width: 60px;
+    height: 72px;
+  }
+  .arrows path {
+    stroke: white;
+    fill: transparent;
+    stroke-width: 1px;
+  }
+  .cover-wrapper {
+    position: relative;
+    background: #356d46 url("https://raw.githubusercontent.com/gwendoux/gwendoux/master/www/img/kubist.jpg") center / cover;
+    width: 100%;
+    height: 100vh;
+    min-height: 26em;
+    max-height: 54em;
+  }
+  h4 {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #214167;
+  }
+  [class^="content-wrap"] {
+    padding: 1em 1.5em 2.5em;
+  }
+  @media (max-width: 420px) {
+    [class^="content-wrap"] {
+      padding: 1em .5em 1.5em;
+    }
+  }
+  .content-wrap {
+    background: #eeeeee;
+  }
+  .content-wrap-alt {
+    background: white;
+  }
+  .overview__header {
+    font-size: 2.75em;
+    text-align: center;
+    padding: 1em 0;
+  }
+  .overview__content {
+    max-width: 1000px;
+    margin: 1em auto;
+  }
+  .overview__content > div:nth-child(2),
+  .overview__content > div:nth-child(3) {
+    width: calc(48%);
+    vertical-align: top;
+    display: inline-block;
+  }
+  @media (max-width: 640px) {
+    .overview__content > div:nth-child(2),
+    .overview__content > div:nth-child(3) {
+      width: 100%;
+    }
+  }
+  .special-header {
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    font-size: 1.25em;
+    font-weight: 700;
+    text-align: center;
+    padding: 1em 0;
+    color: #bbbbbb;
+  }
+  @media (max-width: 360px) {
+    .special-header {
+      letter-spacing: .375em;
+    }
+  }
+  p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  .reading-list,
+  #instafeed {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: stretch;
+    justify-content: center;
+  }
+  .hide-items {
+    overflow: hidden;
+    transition: all .5s ease;
+    /* select items 1 through 3 and show them */
+
+  }
+  .hide-items .reading-list--items {
+    display: none;
+  }
+  @media (min-width: 1000px) {
+    .hide-items .reading-list--items:nth-child(-n+3) {
+      display: inline-block;
+    }
+  }
+  @media (max-width: 999px) {
+    .hide-items .reading-list--items:nth-child(-n+4) {
+      display: inline-block;
+    }
+  }
+  .reading-list--items {
+    padding: .5rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 1000px) {
+    .reading-list--items {
+      width: 33%;
+    }
+  }
+  @media (max-width: 999px) {
+    .reading-list--items {
+      width: 50%;
+    }
+  }
+  @media (max-width: 640px) {
+    .reading-list--items {
+      width: 100%;
+      margin-bottom: .5rem;
+    }
+  }
+  .pinboard-link {
+    margin: 1.5em;
+    width: auto;
+  }
+  .pinboard-link a {
+    font-size: 1.25em;
+  }
+  .pinboard-link a:hover,
+  .pinboard-link a:active {
+    text-decoration: none;
+    color: #ff5370;
+  }
+  .link-wrap {
+    padding: .5em .75em;
+    background-color: #fafafa;
+  }
+  .link-wrap a:hover,
+  .link-wrap a:active {
+    text-decoration: none;
+    background-color: #e1e1e1;
+    color: #5e5e5e;
+  }
+  .photo-box {
+    margin: 1.7999999999999998em;
+    max-width: calc(22.200000000000003%);
+  }
+  .photo-box img {
+    width: 100%;
+    height: auto;
+  }
+  .photo-box .description {
+    font-weight: 100;
+    font-size: 12px;
+    background: #fafafa;
+    color: #9b9b9b;
+    letter-spacing: 1px;
+    padding: 0.8999999999999999em;
+    margin-top: -0.5em;
+  }
+  @media (max-width: 960px) {
+    .photo-box {
+      margin: 1em;
+      max-width: 40%;
+    }
+  }
+  @media (max-width: 540px) {
+    .photo-box {
+      margin: 1em;
+      max-width: 95%;
+    }
+  }
+  footer {
+    background: #fafafa;
+    padding: 1.7999999999999998em 0;
+    text-align: center;
+  }
+  @media screen and (min-width: 1200px) {
+    footer {
+      padding: 6em 0;
+    }
+  }
+  footer h4 {
+    font-size: 2em;
+    text-align: center;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  footer .contact-now-btn {
+    display: inline-block;
+    width: 90%;
+    padding: 1.2em 3em;
+    margin-top: 1.2em;
+    color: #fafafa;
+    background: #585c65;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  @media screen and (min-width: 760px) {
+    footer .contact-now-btn {
+      width: 30%;
+      margin-top: 3em;
+    }
+  }
+  footer .contact-now-btn:hover {
+    background: #646873;
+  }
+  .text-centered {
+    text-align: center;
+  }
+  .hyphenate {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  .smaller {
+    font-size: 75%;
+  }
+  button,
+  .btn {
+    font-size: 1.25em;
+    background-color: #3466a1;
+    color: #fafafa;
+    border: 0;
+    padding: .75rem 1.25rem;
+    cursor: pointer;
+  }
+  button:hover,
+  .btn:hover {
+    background-color: #2f5c92;
+  }
+  button:active,
+  .btn:active {
+    text-shadow: 1px 1px 9px #fafafa;
+  }>
+
+  </style>
+</head>
+<body>
+
+  <header class="cover-wrapper">
+    <div class="name fancy-font">
+          gwendoux.com
+    </div>
+    <div class="social">
+      <a class="ss-icon" href="https://pinboard.in/u:Gwendoux" rel="me">
+        <svg class="icon-ss-pinboard"><use xlink:href="#icon-ss-pinboard"></use></svg>
+      </a>
+      <a class="ss-icon" href="https://github.com/gwendoux/" rel="me">
+        <svg class="icon-ss-github"><use xlink:href="#icon-ss-github"></use></svg>
+      </a>
+      <a class="ss-icon" href="https://twitter.com/gwendoux" rel="me">
+        <svg class="icon-ss-twitter"><use xlink:href="#icon-ss-twitter"></use></svg>
+      </a>
+      <a class="ss-icon" href="https://fr.linkedin.com/in/gwendoux" rel="me">
+        <svg class="icon-ss-linkedin"><use xlink:href="#icon-ss-linkedin"></use></svg>
+      </a>
+      <a class="ss-icon" href="https://instagram.com/gwendoux/" rel="me">
+        <svg class="icon-ss-instagram"><use xlink:href="#icon-ss-instagram"></use></svg>
+      </a>
+    </div>
+    <div class="titles">
+      <h1>Hello! <span>I'm Gwen</span></h1>
+      <h2>I make stuff on the Internets</h2>
+    </div>
+    <div class="scroll-to-next">
+      <a href="#next">
+        <svg class="arrows" >
+			<path d="M0 20 L30 52 L60 20"></path>
+		</svg>
+      </a>
+    </div>
+    </header>
+
+      <section class="content-wrap">
+            <h2 id="next" class="overview__header fancy-font">Overview</h2>
+            <div class="overview__content">
+              <div>
+                <p>Hi there!</p>
+                <p>I'm a front-end developer/designer from France. I mostly do UX design and Node.js development.</p>
+                <p>I also spend time reading and sharing articles I found interesting. I publish almost every day a newsletter with these links.</p>
+                <p>My other interests include coffee, food, magazines, photography, documentary movies and hiking.</p>
+                <p>I especially like doing things <strong>the right way</strong> and <strong>with passion</strong>, whether it be for work or in my personal life.</p>
+              </div>
+              <div class="overview__content">
+                <h3>Things I can do</h3>
+                <ul>
+                  <li>Front End Architecture</li>
+                  <li>UX/UI prototype</li>
+                  <li>Responsive and responsible web design and development</li>
+                  <li>Mobile web sites and web app</li>
+                  <li>General JavaScript and jQuery development</li>
+                  <li>Ember applications and components</li>
+                  <li>Front-end devOps</li>
+                  <li>Web performance</li>
+                  <li>Process and standards development</li>
+                </ul>
+              </div>
+              <div class="overview__content">
+                <h3>Tools I use everyday</h3>
+                  <ul>
+                    <li>HTML/CSS</li>
+                    <li>LESS/PostCSS</li>
+                    <li>Javascript/JQuery</li>
+                    <li>Node</li>
+                    <li>Grunt/NPM</li>
+                    <li>Git</li>
+                    <li>Nginx</li>
+                    <li>Shell</li>
+                  </ul>
+                </div>
+              </div>
+
+      </section>
+<!--
+      <section class="content-wrap-alt">
+            <h2 class="special-header">
+              Reading List <small>#somethingtoread</small>
+            </h2>
+            <div id="pinboardfeed" class="reading-list hide-items">
+              <div class="loader">
+                <div class="spinner"></div>
+              </div>
+            </div>
+      </section>
+
+      <section class="content-wrap">
+              <div id="coffeebeans" class="instagram-content">
+                <h2 class="special-header" >Latest Coffee Beans <small>#coffeeoftheday</small></h2>
+                  <div id="instafeed">
+                    <div class="loader">
+                      <div class="spinner"></div>
+                    </div>
+                  </div>
+              </div>
+      </section>
+-->
+      <footer>
+        <div class="container">
+              <h4>Get in touch</h4>
+              <a class="contact-now-btn" href="mailto:gwen@gwendoux.com" rel="me">gwen@gwendoux.com</a>
+              <a class="contact-now-btn" href="https://twitter.com/gwendoux" rel="me">@gwendoux</a>
+            </div>
+      </footer>
+</body>
+</html>
